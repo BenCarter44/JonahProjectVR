@@ -12,10 +12,8 @@
 
 
 # Added manually - Ben
-!/[Ll]ibrary/*.asset
-!/[Ll]ibrary/*.json
-!/[Ll]ibrary/*.prefs
-!/[Ll]ibrary/ScriptMapper
+!/[Ll]ibrary/BuildPlayer.prefs
+!/[Ll]ibrary/BuildSettings.asset
 
 
 # MemoryCaptures can get excessive in size.
