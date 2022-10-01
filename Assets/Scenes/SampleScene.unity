@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4441794, g: 0.49334657, b: 0.572326, a: 1}
+  m_IndirectSpecularColor: {r: 0.35008273, g: 0.34999424, b: 0.3169305, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -213,7 +213,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 223974227}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &40919616
 MonoBehaviour:
@@ -723,7 +723,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 223974227}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -89.814, z: -1.104}
 --- !u!114 &65284395
 MonoBehaviour:
@@ -878,6 +878,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 782628375}
+  moveSpeed: 0
+  rotateSpeed: 0
 --- !u!1001 &73859894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -963,9 +965,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 65284394}
   - {fileID: 40919615}
   - {fileID: 1828601336}
+  - {fileID: 65284394}
   m_Father: {fileID: 782628377}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1283,14 +1285,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.17452078, y: -0.6444398, z: 0.42466718, w: 0.6114717}
+  m_LocalRotation: {x: -0.123642065, y: -0.7672042, z: 0.08391961, w: 0.623753}
   m_LocalPosition: {x: 491, y: 7, z: 115}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 49.532, y: -80.378, z: 26.976}
+  m_LocalEulerAnglesHint: {x: -1.46, y: -101.996, z: 17.128}
 --- !u!1 &782628375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782628377}
   - component: {fileID: 782628376}
+  - component: {fileID: 782628378}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -1341,6 +1344,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &782628378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782628375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f497e9515b7c25d42bfa822640119c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 782628375}
+  moveSpeed: 0.08
+  rotateSpeed: 0.35
 --- !u!1 &875854550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2579,7 +2597,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 223974227}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1828601337
 MonoBehaviour:
