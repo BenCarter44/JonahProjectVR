@@ -8,44 +8,57 @@ public class CameraNavigator : MonoBehaviour
 
     public GameObject mainCamera;
     private float rotation;
+    private float rotationDEG;
 
     void Start()
     {
-        rotation = -90.0f;
+        rotationDEG = 0.0f;
+        mainCamera.transform.eulerAngles = new Vector3(0, rotationDEG, 0);
+        rotation = (2f * Mathf.PI / 360.0f) * (float)rotationDEG;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame  // axises are different. 0 deg is up.
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            Vector3 target = new Vector3(mainCamera.transform.position.x + 1.0f, mainCamera.transform.position.y, mainCamera.transform.position.z);
+            Vector3 target = new Vector3(mainCamera.transform.position.x + Mathf.Sin(rotation) * 0.02f, mainCamera.transform.position.y, mainCamera.transform.position.z + Mathf.Cos(rotation) * 0.02f);
             mainCamera.transform.position = target;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-            Vector3 target = new Vector3(mainCamera.transform.position.x - 1.0f, mainCamera.transform.position.y, mainCamera.transform.position.z);
+            Vector3 target = new Vector3(mainCamera.transform.position.x - Mathf.Sin(rotation) * 0.02f, mainCamera.transform.position.y, mainCamera.transform.position.z - Mathf.Cos(rotation) * 0.02f);
             mainCamera.transform.position = target;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            Vector3 target = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 1.0f);
+            Vector3 target = new Vector3(mainCamera.transform.position.x + Mathf.Sin(rotation - Mathf.PI / 2.0f) * 0.02f, mainCamera.transform.position.y, mainCamera.transform.position.z + Mathf.Cos(rotation - Mathf.PI / 2.0f) * 0.02f);
             mainCamera.transform.position = target;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            Vector3 target = new Vector3(mainCamera.transform.position.x + 1.0f, mainCamera.transform.position.y, mainCamera.transform.position.z + 1.0f);
+            Vector3 target = new Vector3(mainCamera.transform.position.x + Mathf.Sin(rotation + Mathf.PI / 2.0f) * 0.02f, mainCamera.transform.position.y, mainCamera.transform.position.z + Mathf.Cos(rotation + Mathf.PI / 2.0f) * 0.02f);
             mainCamera.transform.position = target;
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            rotation = rotation - 0.01f;
-            mainCamera.transform.Rotate(0.0f, rotation, 0.0f);
+            rotationDEG = rotationDEG - 0.1f;
+            rotation = (2f * Mathf.PI / 360.0f) * (float)rotationDEG;
+            mainCamera.transform.Rotate(0.0f, -0.1f, 0.0f);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
-            rotation = rotation + 0.01f;
-            mainCamera.transform.Rotate(0.0f, rotation, 0.0f);
+            rotationDEG = rotationDEG + 0.1f;
+            rotation = (2f * Mathf.PI / 360.0f) * (float)rotationDEG;
+            mainCamera.transform.Rotate(0.0f, 0.1f, 0.0f);
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            mainCamera.transform.Rotate(0.1f, 0.0f, 0.0f);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            mainCamera.transform.Rotate(-0.1f, 0.0f, 0.0f);
         }
 
 
