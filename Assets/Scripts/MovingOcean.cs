@@ -11,14 +11,13 @@ public class MovingOcean : MonoBehaviour
         
     }
     float tick = 0;
+	float angle = 0;
     // Update is called once per frame
     void Update()
     {
-        tick = tick + 0.05f;
-        transform.position =  new Vector3(0,Mathf.Sin(tick)/10,0);
-        if (tick==100)
-        {
-            tick = 0;
-        }
+        tick++;
+		if (tick % 10 == 0){angle=angle+0.01f;};
+        transform.position =  new Vector3(0,0,0);
+        transform.localEulerAngles = new Vector3(Mathf.Sin(angle),0,0);
     }
 }
