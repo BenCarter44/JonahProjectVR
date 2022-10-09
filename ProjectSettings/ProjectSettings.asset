@@ -155,9 +155,10 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: -6190611927179344732, guid: 71307edd3181f3d4ba7457b62b5b4b12, type: 2}
-  - {fileID: 2233574119330682964, guid: 07362e7dcfdc84648adeb725407b67f3, type: 2}
-  - {fileID: 11400000, guid: d83300674c426c34c8ace054024d2d6e, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -177,7 +178,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.DefaultCompany.VRv1
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -822,7 +824,8 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Standalone: WINMOCK
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
