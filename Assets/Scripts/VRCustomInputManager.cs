@@ -11,24 +11,27 @@ public class VRCustomInputManager
     private InputDevice leftDevice;
 	private InputDevice rightDevice;
     private InputDevice headsetDevice;
-    private float deadZone;
+    public float deadZone
+    {
+        get; set;
+    }
 
     public float batteryLevel
     {
         get
         {
-            return getRaw<float>(headsetDevice,CommonUsages.batteryLevel);
+            return getRawF(headsetDevice,CommonUsages.batteryLevel);
         }
-        private set;
     }
-    public float userActive
+    public bool userActive
     {
         get
         {
-            return getRaw<float>(headsetDevice,CommonUsages.userPresence);
+            return getRawB(headsetDevice,CommonUsages.userPresence);
         }
-        private set;
+       // private set;
     }
+    
     private bool err;
     public bool isError
     {
@@ -36,13 +39,13 @@ public class VRCustomInputManager
         {
             return err;
         }
-        private set;
+     //   private set;
     }
     public VRCustomInputManager()
     {
         var allDev = new List<UnityEngine.XR.InputDevice>();
-        UnityEngine.XR.InputDevices.GetDevices(inputDevices);
-        foreach (var device in inputDevices)
+        UnityEngine.XR.InputDevices.GetDevices(allDev);
+        foreach (var device in allDev)
         {
             Debug.Log(string.Format("Device found with name '{0}' and role '{1}'", device.name, device.role.ToString()));
         }
@@ -57,17 +60,29 @@ public class VRCustomInputManager
 		rightDevice = rightHandDevices[0];
         headsetDevice = headDevices[0];
     }
-    private T getRaw<T>(InputDevice dev,CommonUsages ug)
+    private Vector2 getRawV(InputDevice dev,InputFeatureUsage<Vector2> ug)
     {
-        T ans;
-        err = leftDevice.TryGetFeatureValue(ug,out ans);
+        Vector2 ans;
+        err = dev.TryGetFeatureValue(ug,out ans);
+        return ans;
+    }
+    private float getRawF(InputDevice dev,InputFeatureUsage<float> ug)
+    {
+        float ans;
+        err = dev.TryGetFeatureValue(ug,out ans);
+        return ans;
+    }
+    private bool getRawB(InputDevice dev,InputFeatureUsage<bool> ug)
+    {
+        bool ans;
+        err = dev.TryGetFeatureValue(ug,out ans);
         return ans;
     }
     public Vector2 getLJoystick
     {
         get
         {
-            Vector2 ans = getRaw<Vector2>(leftDevice,CommonUsages.primary2DAxis);
+            Vector2 ans = getRawV(leftDevice,CommonUsages.primary2DAxis);
             if(Mathf.Abs(ans.x) < deadZone)
             {
                 ans.x = 0.0f;
@@ -78,13 +93,13 @@ public class VRCustomInputManager
             }
             return ans;
         }
-        private set;
+   //     private set;
     }
     public Vector2 getRJoystick
     {
         get
         {
-            Vector2 ans = getRaw<Vector2>(rightDevice,CommonUsages.primary2DAxis);
+            Vector2 ans = getRawV(rightDevice,CommonUsages.primary2DAxis);
             if(Mathf.Abs(ans.x) < deadZone)
             {
                 ans.x = 0.0f;
@@ -95,127 +110,127 @@ public class VRCustomInputManager
             }
             return ans;
         }
-        private set;
+   //     private set;
     }
     public float getLTrigger
     {
         get
         {
-            return getRaw<float>(leftDevice,CommonUsages.trigger);
+            return getRawF(leftDevice,CommonUsages.trigger);
         }
-        private set;
+  //      private set;
     }
     public float getRTrigger
     {
         get
         {
-            return getRaw<float>(rightDevice,CommonUsages.trigger);
+            return getRawF(rightDevice,CommonUsages.trigger);
         }
-        private set;
+   //     private set;
     }
     public bool buttonA
     {
         get
         {
-            return getRaw<bool>(rightDevice,CommonUsages.primaryButton);
+            return getRawB(rightDevice,CommonUsages.primaryButton);
         }
-        private set;
+   //     private set;
     }
     public bool buttonB
     {
         get
         {
-            return getRaw<bool>(rightDevice,CommonUsages.secondaryButton);
+            return getRawB(rightDevice,CommonUsages.secondaryButton);
         }
-        private set;
+   //     private set;
     }
     public bool buttonX
     {
         get
         {
-            return getRaw<bool>(leftDevice,CommonUsages.primaryButton);
+            return getRawB(leftDevice,CommonUsages.primaryButton);
         }
-        private set;
+    //    private set;
     }
     public bool buttonY
     {
         get
         {
-            return getRaw<bool>(leftDevice,CommonUsages.secondaryButton);
+            return getRawB(leftDevice,CommonUsages.secondaryButton);
         }
-        private set;
+    //    private set;
     }
     public float getLHolding
     {
         get
         {
-            return getRaw<float>(leftDevice,CommonUsages.grip);
+            return getRawF(leftDevice,CommonUsages.grip);
         }
-        private set;
+    //    private set;
     }
     public float getRHolding
     {
         get
         {
-            return getRaw<float>(rightDevice,CommonUsages.grip);
+            return getRawF(rightDevice,CommonUsages.grip);
         }
-        private set;
+    //    private set;
     }
     public bool startButton
     {
         get
         {
-            return getRaw<bool>(leftDevice,CommonUsages.menuButton);
+            return getRawB(leftDevice,CommonUsages.menuButton);
         }
-        private set;
+     //   private set;
     }
     public bool getLTriggerButton
     {
         get
         {
-            return getRaw<bool>(leftDevice,CommonUsages.triggerButton);
+            return getRawB(leftDevice,CommonUsages.triggerButton);
         }
-        private set;
+     //   private set;
     }
     public bool getRTriggerButton
     {
         get
         {
-            return getRaw<bool>(rightDevice,CommonUsages.triggerButton);
+            return getRawB(rightDevice,CommonUsages.triggerButton);
         }
-        private set;
+    //    private set;
     }
     public bool getLJoystickPress
     {
         get
         {
-            return getRaw<bool>(leftDevice,CommonUsages.primary2DAxisClick);
+            return getRawB(leftDevice,CommonUsages.primary2DAxisClick);
         }
-        private set;
+     //   private set;
     }
     public bool getRJoystickPress
     {
         get
         {
-            return getRaw<bool>(rightDevice,CommonUsages.primary2DAxisClick);
+            return getRawB(rightDevice,CommonUsages.primary2DAxisClick);
         }
-        private set;
+     //   private set;
     }
     public bool getLJoystickTouch
     {
         get
         {
-            return getRaw<bool>(leftDevice,CommonUsages.primary2DAxisTouch);
+            return getRawB(leftDevice,CommonUsages.primary2DAxisTouch);
         }
-        private set;
+     //   private set;
     }
     public bool getRJoystickTouch
     {
         get
         {
-            return getRaw<bool>(rightDevice,CommonUsages.primary2DAxisTouch);
+            return getRawB(rightDevice,CommonUsages.primary2DAxisTouch);
         }
-        private set;
+    //    private set;
     }
 
 }

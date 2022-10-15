@@ -27,21 +27,27 @@ public class CameraNavigator : MonoBehaviour
       //  rotation = (rad / ((2f * Mathf.PI)) * 360.0f;
         
 		vr = new VRCustomInputManager();
-        vr.setJoystickDeadZone(deadZone);
+        vr.deadZone = deadZone;
     }
 
     // Update is called once per frame  // axises are different. 0 deg is up.
     void Update()
     {
 		bool err = false;
-        Vector2 axisLeft = vr.getLJoystick();
-		err = err || vr.isError();
-        Vector2 axisRight = vr.getRJoystick();
-		err = err || vr.isError();
+        Vector2 axisLeft = vr.getLJoystick;
+		err = err || vr.isError;
+        Vector2 axisRight = vr.getRJoystick;
+		err = err || vr.isError;
         if(err)
         {
             return;
         }
+        float rotationChange = axisLeft.x * Time.deltaTime * rotateSpeed;
+        float radi = (2f * Mathf.PI / 360.0f) * (float)rotationChange;
+        mainCamera.transform.Rotate(0.0f, -radi, 0.0f);
+        
+        float rad = mainCamera.transform.eulerAngles.y;
+        float rotation = (rad / (2f * Mathf.PI)) * 360.0f;
         float moveX = axisRight.x * moveSpeed * Time.deltaTime;
         float moveY = axisRight.y * moveSpeed * Time.deltaTime;
         Vector3 ct = new Vector3(moveX,0,0);
@@ -50,14 +56,8 @@ public class CameraNavigator : MonoBehaviour
         Vector3 comboDir = new Vector3(Mathf.Sin(rotation) * combo.x,0,Mathf.Cos(rotation) * combo.y);
         Vector3 final = mainCamera.transform.position + comboDir;
         mainCamera.transform.position = final;
-
-        mainCamera.transform.position = target;
 		
-        float rotationChange = axisLeft.x * Time.deltaTime * rotateSpeed;
-
-        float rad = (2f * Mathf.PI / 360.0f) * (float)rotationDEG;
-
-        mainCamera.transform.Rotate(0.0f, -rad, 0.0f);
+        
         
       /*  if (getValueR && axisRight.y > 0.5f)
         {
