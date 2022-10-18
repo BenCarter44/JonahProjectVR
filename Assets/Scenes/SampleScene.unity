@@ -880,6 +880,7 @@ MonoBehaviour:
   mainCamera: {fileID: 782628375}
   moveSpeed: 0
   rotateSpeed: 0
+  deadZone: 0
 --- !u!1001 &73859894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1303,6 +1304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782628377}
   - component: {fileID: 782628376}
+  - component: {fileID: 782628378}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -1343,6 +1345,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 273.264, z: 0}
+--- !u!114 &782628378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782628375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f497e9515b7c25d42bfa822640119c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 782628375}
+  moveSpeed: 5
+  rotateSpeed: 45
+  deadZone: 0.2
 --- !u!1 &875854550
 GameObject:
   m_ObjectHideFlags: 0
