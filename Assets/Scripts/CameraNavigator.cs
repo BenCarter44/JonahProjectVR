@@ -10,77 +10,64 @@ public class CameraNavigator : MonoBehaviour
 
     public GameObject mainCamera;
     public float moveSpeed;
-    public float rotateSpeed;
+	public float rotateSpeed;
+	public float deadZone;
 
-    private float rotation;
-    private float rotationDEG;
-
-    private InputDevice leftDevice;
-    private InputDevice rightDevice;
-
+	
+	
+	private InputDevice leftDevice;
+	private InputDevice rightDevice;
+	
+    private CustomInputManagerVR vr;
 
     void Start()
     {
-        rotationDEG = 0.0f;
-        mainCamera.transform.eulerAngles = new Vector3(0, rotationDEG, 0);
-        rotation = (2f * Mathf.PI / 360.0f) * (float)rotationDEG;
-        var leftHandDevices = new List<InputDevice>();
-        var rightHandDevices = new List<InputDevice>();
-        InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, leftHandDevices);
-        InputDevices.GetDevicesAtXRNode(XRNode.RightHand, rightHandDevices);
-        leftDevice = leftHandDevices[0];
-        rightDevice = rightHandDevices[0];
+      //  rotationDEG = 0.0f;
+       // float rad = mainCamera.transform.eulerAngles.y;
+      //  rotation = (rad / ((2f * Mathf.PI)) * 360.0f;
+        
+		vr = new CustomInputManagerVR();
+        vr.deadZone = deadZone;
     }
 
     // Update is called once per frame  // axises are different. 0 deg is up.
     void Update()
     {
-        Vector2 axisLeft;
-        bool getValue = leftDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out axisLeft);
-        Vector2 axisRight;
-        bool getValueR = rightDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out axisRight);
-
-        if (getValueR && axisRight.y > 0.5f)
+		bool err = false;
+        Vector2 axisLeft = vr.getLJoystick;
+		err = err || vr.isError;
+        Vector2 axisRight = vr.getRJoystick;
+		err = err || vr.isError;
+        if(err)
         {
-            Vector3 target = new Vector3(mainCamera.transform.position.x + Mathf.Sin(rotation) * moveSpeed, mainCamera.transform.position.y, mainCamera.transform.position.z + Mathf.Cos(rotation) * moveSpeed * Time.deltaTime);
-            mainCamera.transform.position = target;
+            return;
+        }
+        float rotationChange = axisLeft.x * Time.deltaTime * rotateSpeed;
+        float radi = (2f * Mathf.PI / 360.0f) * (float)rotationChange;
+        mainCamera.transform.Rotate(0.0f, -radi, 0.0f);
+        
+        float rad = mainCamera.transform.eulerAngles.y;
+        float rotation = (rad / (2f * Mathf.PI)) * 360.0f;
+        float moveX = axisRight.x * moveSpeed * Time.deltaTime;
+        float moveY = axisRight.y * moveSpeed * Time.deltaTime;
+        Vector3 ct = new Vector3(moveX,0,0);
+        Vector3 ct2 = new Vector3(0,0,moveY); // local scale
+        Vector3 combo = ct + ct2;
+        Vector3 comboDir = new Vector3(Mathf.Sin(rotation) * combo.x,0,Mathf.Cos(rotation) * combo.y);
+        Vector3 final = mainCamera.transform.position + comboDir;
+        mainCamera.transform.position = final;
+		
+        
+        
+      /*  if (getValueR && axisRight.y > 0.5f)
+        {
+            mainCamera.transform.Rotate(rotateSpeed, 0.0f, 0.0f);
         }
         if (getValueR && axisRight.y < -0.5f)
         {
-            Vector3 target = new Vector3(mainCamera.transform.position.x - Mathf.Sin(rotation) * moveSpeed, mainCamera.transform.position.y, mainCamera.transform.position.z - Mathf.Cos(rotation) * moveSpeed * Time.deltaTime);
-            mainCamera.transform.position = target;
+            mainCamera.transform.Rotate(-rotateSpeed, 0.0f, 0.0f);
         }
-        if (getValueR && axisRight.x < -0.5f)
-        {
-            Vector3 target = new Vector3(mainCamera.transform.position.x + Mathf.Sin(rotation - Mathf.PI / 2.0f) * moveSpeed, mainCamera.transform.position.y, mainCamera.transform.position.z + Mathf.Cos(rotation - Mathf.PI / 2.0f) * moveSpeed * Time.deltaTime);
-            mainCamera.transform.position = target;
-        }
-        if (getValueR && axisRight.x > 0.5f)
-        {
-            Vector3 target = new Vector3(mainCamera.transform.position.x + Mathf.Sin(rotation + Mathf.PI / 2.0f) * moveSpeed, mainCamera.transform.position.y, mainCamera.transform.position.z + Mathf.Cos(rotation + Mathf.PI / 2.0f) * moveSpeed * Time.deltaTime);
-            mainCamera.transform.position = target;
-        }
-        if (getValue && axisLeft.x < -0.5f)
-        {
-            rotationDEG = rotationDEG - rotateSpeed;
-            rotation = (2f * Mathf.PI / 360.0f) * (float)rotationDEG * Time.deltaTime;
-            mainCamera.transform.Rotate(0.0f, -rotateSpeed, 0.0f);
-        }
-        if (getValue && axisLeft.x > 0.5f)
-        {
-            rotationDEG = rotationDEG + rotateSpeed;
-            rotation = (2f * Mathf.PI / 360.0f) * (float)rotationDEG * Time.deltaTime;
-            mainCamera.transform.Rotate(0.0f, rotateSpeed, 0.0f);
-        }
-        /*  if (getValueR && axisRight.y > 0.5f)
-          {
-              mainCamera.transform.Rotate(rotateSpeed, 0.0f, 0.0f);
-          }
-          if (getValueR && axisRight.y < -0.5f)
-          {
-              mainCamera.transform.Rotate(-rotateSpeed, 0.0f, 0.0f);
-          }
-  */
+*/
 
     }
 }

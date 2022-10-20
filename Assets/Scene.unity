@@ -838,12 +838,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 154241292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e44079705b40094397ba9fd99a34791, type: 3}
+  m_Script: {fileID: 11500000, guid: 83188fccf9f70ac49be465398beb027a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 154241292}
-  moveSpeed: 0.8
-  rotateSpeed: 0.5
+  moveSpeed: 10
+  rotateSpeed: 40
+  deadZone: 0.2
 --- !u!1 &579473048
 GameObject:
   m_ObjectHideFlags: 0
