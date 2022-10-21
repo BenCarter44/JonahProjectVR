@@ -58,16 +58,17 @@ public class CameraNavigator : MonoBehaviour
         //mainCamera.transform.Rotate(0.0f, -radi, 0.0f);
         
       //  float rad = camRaw.transform.eulerAngles.y;
-     //   float rad = InputTracking.GetLocalRotation(XRNode.CenterEye).eulerAngles.y;
-        float rad =  Mathf.PI / 4;
+        float rad = InputTracking.GetLocalRotation(XRNode.CenterEye).eulerAngles.y;
+        //   float rad =  Mathf.PI / 4;
         debugger.text = "" + rad;
-       // float rotation = (rad / (2f * Mathf.PI)) * 360.0f;
+        float rotation = (rad * (2f * Mathf.PI)) / 360.0f;
         float moveX = axisRight.x * moveSpeed * Time.deltaTime;
-        float moveY = axisRight.y * moveSpeed * Time.deltaTime;
+        float moveY = axisRight.y * moveSpeed * Time.deltaTime * -1;
         Vector3 ct = new Vector3(moveX,0,0);
         Vector3 ct2 = new Vector3(0,0,moveY); // local scale
         Vector3 combo = ct + ct2;
         Vector3 comboDir = new Vector3(Mathf.Sin(rad) * combo.x,0,Mathf.Cos(rad) * combo.z);
+        debugger.text = "" + rad + "," + (Mathf.Sin(rad) * combo.x);
         Vector3 final = mainCamera.transform.position + comboDir;
         mainCamera.transform.position = final;
 		
