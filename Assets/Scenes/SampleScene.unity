@@ -707,7 +707,6 @@ GameObject:
   - component: {fileID: 65284397}
   - component: {fileID: 65284396}
   - component: {fileID: 65284395}
-  - component: {fileID: 65284398}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -870,23 +869,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &65284398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 65284393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f497e9515b7c25d42bfa822640119c75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 782628375}
-  moveSpeed: 5
-  rotateSpeed: 40
-  deadZone: 0.2
-  debugger: {fileID: 0}
 --- !u!1001 &73859894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2292,7 +2274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782628375}
   m_LocalRotation: {x: -0, y: -0.10155676, z: -0, w: -0.9948298}
-  m_LocalPosition: {x: -11.034202, y: 0, z: 5.5788956}
+  m_LocalPosition: {x: -7.71, y: 0.2, z: 21.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2317,6 +2299,7 @@ MonoBehaviour:
   rotateSpeed: 40
   deadZone: 0.2
   debugger: {fileID: 2089110259}
+  camRaw: {fileID: 0}
 --- !u!1 &827205440
 GameObject:
   m_ObjectHideFlags: 0
@@ -5168,17 +5151,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089110258}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 27.54}
+  m_LocalRotation: {x: -0, y: 0.9998167, z: -0, w: -0.019148475}
+  m_LocalPosition: {x: 0, y: 0, z: 15.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 182.194, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.86, y: 2.44}
+  m_AnchoredPosition: {x: -29.17, y: 2.44}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2097221560

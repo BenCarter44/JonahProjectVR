@@ -14,7 +14,7 @@ public class CameraNavigator : MonoBehaviour
 	public float rotateSpeed;
 	public float deadZone;
     public TextMeshPro debugger;
-	
+	public GameObject camRaw;
 	
 	private InputDevice leftDevice;
 	private InputDevice rightDevice;
@@ -41,24 +41,33 @@ public class CameraNavigator : MonoBehaviour
 		err = err || vr.isError;
         Vector2 axisRight = vr.getRJoystick;
 		err = err || vr.isError;
-        debugger.text = "Hello!";
+        if(debugger)
+        debugger.text = "IsError!";
      
         if(err)
         {
+            debugger.text = "IsError!";
             return;
+        }
+        else
+        {
+          //  debugger.text = "NoE";
         }
         float rotationChange = axisLeft.x * Time.deltaTime * rotateSpeed;
         float radi = (2f * Mathf.PI / 360.0f) * (float)rotationChange;
-        mainCamera.transform.Rotate(0.0f, -radi, 0.0f);
+        //mainCamera.transform.Rotate(0.0f, -radi, 0.0f);
         
-        float rad = mainCamera.transform.eulerAngles.y;
-        float rotation = (rad / (2f * Mathf.PI)) * 360.0f;
+      //  float rad = camRaw.transform.eulerAngles.y;
+     //   float rad = InputTracking.GetLocalRotation(XRNode.CenterEye).eulerAngles.y;
+        float rad =  Mathf.PI / 4;
+        debugger.text = "" + rad;
+       // float rotation = (rad / (2f * Mathf.PI)) * 360.0f;
         float moveX = axisRight.x * moveSpeed * Time.deltaTime;
         float moveY = axisRight.y * moveSpeed * Time.deltaTime;
         Vector3 ct = new Vector3(moveX,0,0);
         Vector3 ct2 = new Vector3(0,0,moveY); // local scale
         Vector3 combo = ct + ct2;
-        Vector3 comboDir = new Vector3(Mathf.Sin(rotation) * combo.x,0,Mathf.Cos(rotation) * combo.y);
+        Vector3 comboDir = new Vector3(Mathf.Sin(rad) * combo.x,0,Mathf.Cos(rad) * combo.z);
         Vector3 final = mainCamera.transform.position + comboDir;
         mainCamera.transform.position = final;
 		

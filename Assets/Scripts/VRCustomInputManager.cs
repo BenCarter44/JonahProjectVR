@@ -41,13 +41,14 @@ public class VRCustomInputManager
         }
      //   private set;
     }
+
     public VRCustomInputManager()
     {
         var allDev = new List<UnityEngine.XR.InputDevice>();
         UnityEngine.XR.InputDevices.GetDevices(allDev);
         foreach (var device in allDev)
         {
-            Debug.Log(string.Format("Device found with name '{0}' and role '{1}'", device.name, device.role.ToString()));
+            Debug.Log(string.Format("========================== Device found with name '{0}' and role '{1}'", device.name, device.role.ToString()));
         }
 
         var leftHandDevices = new List<InputDevice>();
@@ -63,19 +64,19 @@ public class VRCustomInputManager
     private Vector2 getRawV(InputDevice dev,InputFeatureUsage<Vector2> ug)
     {
         Vector2 ans;
-        err = dev.TryGetFeatureValue(ug,out ans);
+        err = !dev.TryGetFeatureValue(ug,out ans);
         return ans;
     }
     private float getRawF(InputDevice dev,InputFeatureUsage<float> ug)
     {
         float ans;
-        err = dev.TryGetFeatureValue(ug,out ans);
+        err = !dev.TryGetFeatureValue(ug,out ans);
         return ans;
     }
     private bool getRawB(InputDevice dev,InputFeatureUsage<bool> ug)
     {
         bool ans;
-        err = dev.TryGetFeatureValue(ug,out ans);
+        err = !dev.TryGetFeatureValue(ug,out ans);
         return ans;
     }
     public Vector2 getLJoystick
