@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.Events;
+using TMPro;
 
 public class CameraNavigator : MonoBehaviour
 {
@@ -12,11 +13,12 @@ public class CameraNavigator : MonoBehaviour
     public float moveSpeed;
 	public float rotateSpeed;
 	public float deadZone;
-
+    public TextMeshPro debugger;
 	
 	
 	private InputDevice leftDevice;
 	private InputDevice rightDevice;
+    
 	
     private VRCustomInputManager vr;
 
@@ -28,6 +30,7 @@ public class CameraNavigator : MonoBehaviour
         
 		vr = new VRCustomInputManager();
         vr.deadZone = deadZone;
+      //  debugger = GameObject.Find("Debugger").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame  // axises are different. 0 deg is up.
@@ -38,6 +41,8 @@ public class CameraNavigator : MonoBehaviour
 		err = err || vr.isError;
         Vector2 axisRight = vr.getRJoystick;
 		err = err || vr.isError;
+        debugger.text = "Hello!";
+     
         if(err)
         {
             return;
