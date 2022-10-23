@@ -58,31 +58,36 @@ public class CameraNavigator : MonoBehaviour
         //mainCamera.transform.Rotate(0.0f, -radi, 0.0f);
         
       //  float rad = camRaw.transform.eulerAngles.y;
-        float rad = InputTracking.GetLocalRotation(XRNode.CenterEye).eulerAngles.y;
+        float rad = InputTracking.GetLocalRotation(XRNode.CenterEye).eulerAngles.y; // gets the angles of the headset.
+        rad = 90.0f - rad;
         //   float rad =  Mathf.PI / 4;
         debugger.text = "" + rad;
         float rotation = (rad * (2f * Mathf.PI)) / 360.0f;
         float moveX = axisRight.x * moveSpeed * Time.deltaTime;
-        float moveY = axisRight.y * moveSpeed * Time.deltaTime * -1;
-        Vector3 ct = new Vector3(moveX,0,0);
-        Vector3 ct2 = new Vector3(0,0,moveY); // local scale
-        Vector3 combo = ct + ct2;
-        Vector3 comboDir = new Vector3(Mathf.Sin(rad) * combo.x,0,Mathf.Cos(rad) * combo.z);
-        debugger.text = "" + rad + "," + (Mathf.Sin(rad) * combo.x);
-        Vector3 final = mainCamera.transform.position + comboDir;
-        mainCamera.transform.position = final;
-		
+        float moveY = axisRight.y * moveSpeed * Time.deltaTime;
         
+        // using a rotating a vector formula
+
+        Vector3 comboDir = new Vector3(Mathf.Cos(rad) * moveX - Mathf.Sin(rad) * moveY,0.0f, Mathf.Sin(rad) * moveX + Mathf.Cos(rad) * moveY);
+        debugger.text = "" + rad;
+        mainCamera.transform.Translate(comboDir);
+
         
-      /*  if (getValueR && axisRight.y > 0.5f)
-        {
-            mainCamera.transform.Rotate(rotateSpeed, 0.0f, 0.0f);
-        }
-        if (getValueR && axisRight.y < -0.5f)
-        {
-            mainCamera.transform.Rotate(-rotateSpeed, 0.0f, 0.0f);
-        }
-*/
+           Vector3 gamepad3D = new Vector3(gamepad.leftStick.x.ReadValue(), 0.0, gamepad.leftStick.y.ReadValue()); // for the future with cybershoes.
+            mainCamera.transform.Translate(gamepad3D * Time.deltaTime * moveSpeed);
+         
+
+
+
+        /*  if (getValueR && axisRight.y > 0.5f)
+          {
+              mainCamera.transform.Rotate(rotateSpeed, 0.0f, 0.0f);
+          }
+          if (getValueR && axisRight.y < -0.5f)
+          {
+              mainCamera.transform.Rotate(-rotateSpeed, 0.0f, 0.0f);
+          }
+  */
 
     }
 }
