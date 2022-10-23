@@ -72,11 +72,11 @@ public class CameraNavigator : MonoBehaviour
         debugger.text = "" + rad;
         mainCamera.transform.Translate(comboDir);
 
-        
+        /*
            Vector3 gamepad3D = new Vector3(gamepad.leftStick.x.ReadValue(), 0.0, gamepad.leftStick.y.ReadValue()); // for the future with cybershoes.
             mainCamera.transform.Translate(gamepad3D * Time.deltaTime * moveSpeed);
          
-
+        */
 
 
         /*  if (getValueR && axisRight.y > 0.5f)
