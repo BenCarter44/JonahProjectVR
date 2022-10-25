@@ -40,6 +40,15 @@ public class VRCustomInputManager
         }
        // private set;
     }
+    public Quaternion getViewAngle
+    {
+        get
+        {
+            Quaternion qq;
+            qq = InputTracking.GetLocalRotation(XRNode.CenterEye);
+            return qq;
+        }
+    }
     
     private bool err;
     public bool isError  // store if there is any read error

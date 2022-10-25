@@ -14,7 +14,9 @@ public class CameraNavigator : MonoBehaviour
 	public float rotateSpeed;
 	public float deadZone;
     public TextMeshPro debugger;
-	public GameObject camRaw;
+    public TextMeshPro debugger2;
+    public TextMeshPro debugger3;
+    public GameObject camRaw;
 	
 	private InputDevice leftDevice;
 	private InputDevice rightDevice;
@@ -41,8 +43,12 @@ public class CameraNavigator : MonoBehaviour
 		err = err || vr.isError;
         Vector2 axisRight = vr.getRJoystick;
 		err = err || vr.isError;
-        if(debugger)
-        debugger.text = "IsError!";
+        bool resetView = vr.buttonB;
+        err = err || vr.isError;
+        if (debugger)
+        {
+            debugger.text = "IsError!";
+        }
      
         if(err)
         {
@@ -51,26 +57,34 @@ public class CameraNavigator : MonoBehaviour
         }
         else
         {
-          //  debugger.text = "NoE";
+            //  debugger.text = "NoE";
+            debugger2.text = "X: " + axisLeft.x;
+            debugger3.text = "Y: " + axisLeft.y;
         }
-        float rotationChange = axisLeft.x * Time.deltaTime * rotateSpeed;
-        float radi = (2f * Mathf.PI / 360.0f) * (float)rotationChange;
+        if(resetView)
+        {
+            mainCamera.transform.position = new Vector3(-43f, 0.8f, 120f);
+        }
+       
+       
         //mainCamera.transform.Rotate(0.0f, -radi, 0.0f);
-        
-      //  float rad = camRaw.transform.eulerAngles.y;
-        float rad = InputTracking.GetLocalRotation(XRNode.CenterEye).eulerAngles.y; // gets the angles of the headset.
-        rad = 90.0f - rad;
-        //   float rad =  Mathf.PI / 4;
+        Vector3 plain1 = new Vector3(axisRight.x * moveSpeed * Time.deltaTime, 0.0f, axisRight.y * moveSpeed * Time.deltaTime);
+        //  float rad = camRaw.transform.eulerAngles.y;
+        float rad = vr.getViewAngle; //InputTracking.GetLocalRotation(XRNode.CenterEye).eulerAngles.y; // gets the angles of the headset.
+        rad = 180.0f - rad;
+        //  float rad =  Mathf.PI / 4;
         debugger.text = "" + rad;
         float rotation = (rad * (2f * Mathf.PI)) / 360.0f;
-        float moveX = axisRight.x * moveSpeed * Time.deltaTime;
-        float moveY = axisRight.y * moveSpeed * Time.deltaTime;
+       // Vector3 rotationAdjusted
         
         // using a rotating a vector formula
-
-        Vector3 comboDir = new Vector3(Mathf.Cos(rad) * moveX - Mathf.Sin(rad) * moveY,0.0f, Mathf.Sin(rad) * moveX + Mathf.Cos(rad) * moveY);
-        debugger.text = "" + rad;
+        
+        Vector3 comboDir = new Vector3(Mathf.Cos(rotation) * moveX - Mathf.Sin(rotation) * moveY,0.0f, Mathf.Sin(rotation) * moveX + Mathf.Cos(rotation) * moveY);
         mainCamera.transform.Translate(comboDir);
+        
+        Vector3 plain = new Vector3(axisLeft.x * moveSpeed * Time.deltaTime, 0.0f, axisLeft.y * moveSpeed * Time.deltaTime);
+        mainCamera.transform.position = mainCamera.transform.position + plain; // (plain);
+
 
         /*
            Vector3 gamepad3D = new Vector3(gamepad.leftStick.x.ReadValue(), 0.0, gamepad.leftStick.y.ReadValue()); // for the future with cybershoes.
