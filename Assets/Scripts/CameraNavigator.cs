@@ -79,11 +79,11 @@ public class CameraNavigator : MonoBehaviour
         
         // using a rotating a vector formula
         
-        Vector3 comboDir = new Vector3(Mathf.Cos(rotation) * plain1.x - Mathf.Sin(rotation) * plain1.z,0.0f, Mathf.Sin(rotation) * plain1.x + Mathf.Cos(rotation) * plain1.y);
-        mainCamera.transform.Translate(comboDir);
+        Vector3 comboDir = new Vector3(Mathf.Cos(rotation) * plain1.x - Mathf.Sin(rotation) * plain1.z,0.0f, Mathf.Sin(rotation) * plain1.x + Mathf.Cos(rotation) * plain1.z);
+        mainCamera.transform.Translate(comboDir * -1);
         
-        Vector3 plain = new Vector3(axisLeft.x * moveSpeed * Time.deltaTime, 0.0f, axisLeft.y * moveSpeed * Time.deltaTime);
-        mainCamera.transform.position = mainCamera.transform.position + plain; // (plain);
+       // Vector3 plain = new Vector3(axisLeft.x * moveSpeed * Time.deltaTime, 0.0f, axisLeft.y * moveSpeed * Time.deltaTime); // plain!
+       // mainCamera.transform.position = mainCamera.transform.position + plain; // (plain);
 
 
         /*
