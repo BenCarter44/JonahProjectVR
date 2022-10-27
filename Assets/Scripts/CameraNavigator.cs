@@ -70,7 +70,7 @@ public class CameraNavigator : MonoBehaviour
         //mainCamera.transform.Rotate(0.0f, -radi, 0.0f);
         Vector3 plain1 = new Vector3(axisRight.x * moveSpeed * Time.deltaTime, 0.0f, axisRight.y * moveSpeed * Time.deltaTime);
         //  float rad = camRaw.transform.eulerAngles.y;
-        float rad = vr.getViewAngle; //InputTracking.GetLocalRotation(XRNode.CenterEye).eulerAngles.y; // gets the angles of the headset.
+        float rad = vr.getViewAngle.eulerAngles.y; //InputTracking.GetLocalRotation(XRNode.CenterEye).eulerAngles.y; // gets the angles of the headset.
         rad = 180.0f - rad;
         //  float rad =  Mathf.PI / 4;
         debugger.text = "" + rad;
@@ -79,7 +79,7 @@ public class CameraNavigator : MonoBehaviour
         
         // using a rotating a vector formula
         
-        Vector3 comboDir = new Vector3(Mathf.Cos(rotation) * moveX - Mathf.Sin(rotation) * moveY,0.0f, Mathf.Sin(rotation) * moveX + Mathf.Cos(rotation) * moveY);
+        Vector3 comboDir = new Vector3(Mathf.Cos(rotation) * plain1.x - Mathf.Sin(rotation) * plain1.z,0.0f, Mathf.Sin(rotation) * plain1.x + Mathf.Cos(rotation) * plain1.y);
         mainCamera.transform.Translate(comboDir);
         
         Vector3 plain = new Vector3(axisLeft.x * moveSpeed * Time.deltaTime, 0.0f, axisLeft.y * moveSpeed * Time.deltaTime);
