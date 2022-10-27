@@ -13,9 +13,10 @@ public class CameraNavigator : MonoBehaviour
     public float moveSpeed;
 	public float rotateSpeed;
 	public float deadZone;
-    public TextMeshPro debugger;
+   /* public TextMeshPro debugger;
     public TextMeshPro debugger2;
     public TextMeshPro debugger3;
+   */
     public GameObject camRaw;
 	
 	private InputDevice leftDevice;
@@ -45,7 +46,7 @@ public class CameraNavigator : MonoBehaviour
 		err = err || vr.isError;
         bool resetView = vr.buttonB;
         err = err || vr.isError;
-        if (debugger)
+      /*  if (debugger)
         {
             debugger.text = "IsError!";
         }
@@ -61,6 +62,7 @@ public class CameraNavigator : MonoBehaviour
             debugger2.text = "X: " + axisLeft.x;
             debugger3.text = "Y: " + axisLeft.y;
         }
+      */
         if(resetView)
         {
             mainCamera.transform.position = new Vector3(-43f, 0.8f, 120f);
@@ -73,7 +75,7 @@ public class CameraNavigator : MonoBehaviour
         float rad = vr.getViewAngle.eulerAngles.y; //InputTracking.GetLocalRotation(XRNode.CenterEye).eulerAngles.y; // gets the angles of the headset.
         rad = 180.0f - rad;
         //  float rad =  Mathf.PI / 4;
-        debugger.text = "" + rad;
+      //  debugger.text = "" + rad;
         float rotation = (rad * (2f * Mathf.PI)) / 360.0f;
        // Vector3 rotationAdjusted
         
