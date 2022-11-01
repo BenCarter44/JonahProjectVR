@@ -17,7 +17,7 @@ public class CameraNavigator : MonoBehaviour
     public TextMeshPro debugger2;
     public TextMeshPro debugger3;
    */
-    public GameObject camRaw;
+   // public GameObject camRaw;
 	
 	private InputDevice leftDevice;
 	private InputDevice rightDevice;
