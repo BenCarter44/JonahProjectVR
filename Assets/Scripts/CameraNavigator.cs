@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.Events;
 using TMPro;
+using Cybershoes;
 
 public class CameraNavigator : MonoBehaviour
 {
@@ -89,11 +90,12 @@ public class CameraNavigator : MonoBehaviour
        // mainCamera.transform.position = mainCamera.transform.position + plain; // (plain);
 
 
-        /*
-           Vector3 gamepad3D = new Vector3(gamepad.leftStick.x.ReadValue(), 0.0, gamepad.leftStick.y.ReadValue()); // for the future with cybershoes.
+        
+        //   Vector3 gamepad3D = new Vector3(gamepad.leftStick.x.ReadValue(), 0.0, gamepad.leftStick.y.ReadValue()); // for the future with cybershoes.
+           Vector3 gamepad3D = GetCybershoesInput();
             mainCamera.transform.Translate(gamepad3D * Time.deltaTime * moveSpeed);
          
-        */
+        
 
 
         /*  if (getValueR && axisRight.y > 0.5f)
@@ -107,4 +109,21 @@ public class CameraNavigator : MonoBehaviour
   */
 
     }
+    private Vector3 GetCybershoesInput()
+    {
+        var gamepad = UnityEngine.InputSystem.Gamepad.current;
+        if (gamepad == null)
+        {
+            Debug.Log("No gamepad found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            return Vector3.zero;
+        } 
+        Vector2 shoeMovement = new Vector2(gamepad.leftStick.x.ReadValue(), gamepad.leftStick.y.ReadValue());
+        Quaternion hmdRotation = vr.getViewAngle;
+        
+        hmdRotation.x = 0;
+        hmdRotation.z = 0;
+        Vector2 adjustedShoeMovement = CybershoesInput.GetRotatedShoeVector(hmdRotation, shoeMovement);
+        Vector3 characterMovement = hmdRotation * new Vector3(adjustedShoeMovement.x, 0, adjustedShoeMovement.y);
+        return characterMovement;
+    }  
 }
