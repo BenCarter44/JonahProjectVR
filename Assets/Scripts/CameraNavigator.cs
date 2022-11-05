@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.XR.Interaction.Toolkit;
 using Cybershoes;
 
 public class CameraNavigator : MonoBehaviour
@@ -28,19 +29,32 @@ public class CameraNavigator : MonoBehaviour
 
     void Start()
     {
-      //  rotationDEG = 0.0f;
-       // float rad = mainCamera.transform.eulerAngles.y;
-      //  rotation = (rad / ((2f * Mathf.PI)) * 360.0f;
+        //  rotationDEG = 0.0f;
+        // float rad = mainCamera.transform.eulerAngles.y;
+        //  rotation = (rad / ((2f * Mathf.PI)) * 360.0f;
         
 		vr = new VRCustomInputManager();
         vr.deadZone = deadZone;
-      //  debugger = GameObject.Find("Debugger").GetComponent<TextMeshPro>();
+        if (vr == null)
+        {
+            Debug.Log("No VR Headset!");
+            return;
+        }
+        //  debugger = GameObject.Find("Debugger").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame  // axises are different. 0 deg is up.
+
+
     void Update()
     {
-		bool err = false;
+        if (vr == null)
+        {
+            //   Debug.Log("No VR Headset!");
+         //   mainCamera.transform.Translate(new Vector3(0,0,-1.0f * Time.deltaTime * moveSpeed));
+            return;
+        }
+        bool err = false;
         Vector2 axisLeft = vr.getLJoystick;
 		err = err || vr.isError;
         Vector2 axisRight = vr.getRJoystick;
@@ -68,8 +82,26 @@ public class CameraNavigator : MonoBehaviour
         {
             mainCamera.transform.position = new Vector3(-43f, 0.8f, 120f);
         }
-       
-       
+        /*
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            mainCamera.transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0.0f, 0.0f));
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            mainCamera.transform.Translate(new Vector3(-1.0f * moveSpeed * Time.deltaTime, 0.0f, 0.0f));
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            mainCamera.transform.Translate(new Vector3(0.0f,0.0f,-1.0f * moveSpeed * Time.deltaTime));
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            mainCamera.transform.Translate(new Vector3(0.0f,0.0f,moveSpeed * Time.deltaTime));
+        }
+        */
+
+
         //mainCamera.transform.Rotate(0.0f, -radi, 0.0f);
         Vector3 plain1 = new Vector3(axisRight.x * moveSpeed * Time.deltaTime, 0.0f, axisRight.y * moveSpeed * Time.deltaTime);
         //  float rad = camRaw.transform.eulerAngles.y;
@@ -126,4 +158,8 @@ public class CameraNavigator : MonoBehaviour
         Vector3 characterMovement = hmdRotation * new Vector3(adjustedShoeMovement.x, 0, adjustedShoeMovement.y);
         return characterMovement;
     }  
+    public void OnSelectCar(XRBaseInteractor obj)
+    {
+        //obj.GameObject.
+    }
 }
