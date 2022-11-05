@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.2920053, g: 0.27662617, b: 0.22470486, a: 1}
+  m_IndirectSpecularColor: {r: 0.2920055, g: 0.27662626, b: 0.22470471, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2706,7 +2706,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 782628375}
-  moveSpeed: 5
+  moveSpeed: 9
+  walkSpeed: 7
   rotateSpeed: 40
   deadZone: 0.2
 --- !u!54 &782628379
@@ -11128,8 +11129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jeepReplica: {fileID: 788007295}
-  maxJeeps: 100
-  timeSep: 1
+  maxJeeps: 30
+  timeSep: 5
 --- !u!1 &1876048146
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,8 +13,10 @@ public class CameraNavigator : MonoBehaviour
 
     public GameObject mainCamera;
     public float moveSpeed;
+    public float walkSpeed;
 	public float rotateSpeed;
 	public float deadZone;
+    private float walkHold;
    /* public TextMeshPro debugger;
     public TextMeshPro debugger2;
     public TextMeshPro debugger3;
@@ -80,7 +82,12 @@ public class CameraNavigator : MonoBehaviour
       */
         if(resetView)
         {
-            mainCamera.transform.position = new Vector3(-43f, 0.8f, 120f);
+           // mainCamera.transform.position = new Vector3(-138.6f, 0.8f, 23.3f);
+            walkHold = 2 * walkSpeed;
+        }
+        else
+        {
+            walkHold = walkSpeed;
         }
         /*
         if(Input.GetKey(KeyCode.LeftArrow))
@@ -125,7 +132,7 @@ public class CameraNavigator : MonoBehaviour
         
         //   Vector3 gamepad3D = new Vector3(gamepad.leftStick.x.ReadValue(), 0.0, gamepad.leftStick.y.ReadValue()); // for the future with cybershoes.
            Vector3 gamepad3D = GetCybershoesInput();
-            mainCamera.transform.Translate(gamepad3D * Time.deltaTime * moveSpeed);
+            mainCamera.transform.Translate(gamepad3D * Time.deltaTime * walkHold);
          
         
 
