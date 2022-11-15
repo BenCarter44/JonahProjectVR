@@ -128,24 +128,10 @@ public class CameraNavigator : MonoBehaviour
        // Vector3 plain = new Vector3(axisLeft.x * moveSpeed * Time.deltaTime, 0.0f, axisLeft.y * moveSpeed * Time.deltaTime); // plain!
        // mainCamera.transform.position = mainCamera.transform.position + plain; // (plain);
 
-
-        
         //   Vector3 gamepad3D = new Vector3(gamepad.leftStick.x.ReadValue(), 0.0, gamepad.leftStick.y.ReadValue()); // for the future with cybershoes.
            Vector3 gamepad3D = GetCybershoesInput();
             mainCamera.transform.Translate(gamepad3D * Time.deltaTime * walkHold);
          
-        
-
-
-        /*  if (getValueR && axisRight.y > 0.5f)
-          {
-              mainCamera.transform.Rotate(rotateSpeed, 0.0f, 0.0f);
-          }
-          if (getValueR && axisRight.y < -0.5f)
-          {
-              mainCamera.transform.Rotate(-rotateSpeed, 0.0f, 0.0f);
-          }
-  */
 
     }
     private Vector3 GetCybershoesInput()
