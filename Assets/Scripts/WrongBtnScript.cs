@@ -12,6 +12,17 @@ public class WrongBtnScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void OnEnable()
+    {
         // finds game objects
         npc = GameObject.Find("NPC");
         c = GameObject.Find("Canvas");
@@ -23,16 +34,10 @@ public class WrongBtnScript : MonoBehaviour
         self.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // Called when active is changed to false
     void OnDisable()
     {
         // loads scooter crash scene
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("SampleScene");// placeholder
     }
 }

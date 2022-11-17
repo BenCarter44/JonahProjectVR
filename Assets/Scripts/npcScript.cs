@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class OpenDoor : MonoBehaviour
+public class npcScript : MonoBehaviour
 {
-    private GameObject door;
+    private GameObject npc;
+    private GameObject c;
+
     private List<UnityEngine.XR.InputDevice> right = new List<UnityEngine.XR.InputDevice>();
     private bool triggerValue;
-    private bool openFlag;
+
     // Start is called before the first frame update
     void Start()
     {
-        door = GameObject.Find("01_low");
-        openFlag = false;
+        npc = GameObject.Find("NPC");
+        c = GameObject.Find("Canvas");
+
         UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.RightHand, right);
     }
 
@@ -22,19 +25,7 @@ public class OpenDoor : MonoBehaviour
     {
         if (right[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue)
         {
-            ChangeRotation();
-        }
-    }
-
-    void ChangeRotation()
-    {
-        if (!openFlag)
-        {
-            door.transform.Rotate(0, -90, 0);
-        }
-        else
-        {
-            door.transform.Rotate(0, 0, 0);
+            c.SetActive(true);
         }
     }
 }
