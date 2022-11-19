@@ -13,6 +13,7 @@ public class RobotAdder : MonoBehaviour
     private List<Vector3> theSpawnPoints;
     private Stack<GameObject> createdCars;
     private int createdJeeps = 0;
+    public GameObject goalMan;
     private bool stopped = false;
     // Start is called before the first frame update
     void Start()
@@ -25,8 +26,8 @@ public class RobotAdder : MonoBehaviour
         theSpawnPoints.Add(new Vector3(-7.8f, 1.05f, -71.9f));
         theSpawnPoints.Add(new Vector3(-115.3f, 1.05f, 83.7f));
         jeepReplica.SetActive(false); // disable it.
-        timeLog = 0.0f;
-        
+        timeLog = timeSep - 5.0f; // start with 5sec delay
+        goalMan.GetComponent<GoalScript>().Invoke("StartClock", 5.0f);
     }
 
     // Update is called once per frame
@@ -52,13 +53,14 @@ public class RobotAdder : MonoBehaviour
         newJeep.SetActive(true);
         createdJeeps += 1;
         createdCars.Push(newJeep);
+        
     }
     public void StopCars()
     {
         stopped = true;
         foreach (GameObject i in createdCars)
         {
-            i.GetComponent<RobotCars>().Invoke("StopCars", 1);
+            i.GetComponent<RobotCars>().Invoke("StopCars", 0.01f); // stop immediately!
         }
     }
 }
