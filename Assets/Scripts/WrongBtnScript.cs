@@ -21,7 +21,7 @@ public class WrongBtnScript : MonoBehaviour
         
     }
 
-    void OnEnable()
+    public void OnEnable()
     {
         // finds game objects
         npc = GameObject.Find("NPC");
@@ -31,13 +31,17 @@ public class WrongBtnScript : MonoBehaviour
         // restores active values
         npc.SetActive(false);
         c.SetActive(false);
+
+        // loads scooter crash scene
+        SceneManager.LoadScene(1);// placeholder        
+        
         self.SetActive(false);
+
     }
 
     // Called when active is changed to false
-    void OnDisable()
+    public void OnDisable()
     {
-        // loads scooter crash scene
-        SceneManager.LoadScene("SampleScene");// placeholder
+        
     }
 }
