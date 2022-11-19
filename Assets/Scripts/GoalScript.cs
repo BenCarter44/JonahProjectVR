@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GoalScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GoalScript : MonoBehaviour
     public GameObject theBlackScreen;
     private TextMeshProUGUI timerCounter;
     private TextMeshProUGUI infoDialog;
+
 
     public GameObject tmCount;
     public GameObject infDiag;
@@ -81,6 +83,7 @@ public class GoalScript : MonoBehaviour
                 {
                     Image img = theBlackScreen.GetComponent<Image>();
                     img.color = stopColor;
+                    Invoke("ToNextScene", 1f);
                 }
                 else
                 {
@@ -115,5 +118,9 @@ public class GoalScript : MonoBehaviour
             clockEpicStart = Time.time;
             timerCounter.text = "Time: " + startClockAmount;
         }
+    }
+    void ToNextScene()
+    {
+        SceneManager.LoadScene("Scene3b");
     }
 }
