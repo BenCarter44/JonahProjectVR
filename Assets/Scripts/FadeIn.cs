@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class FadeIn : MonoBehaviour
 {
@@ -59,6 +60,7 @@ public class FadeIn : MonoBehaviour
                 Image img = theBlackScreen.GetComponent<Image>();
                 img.color = stopColor;
                 isFading2 = false;
+                Invoke("ToNextScene", 1f);
             }
             else
             {
@@ -73,5 +75,10 @@ public class FadeIn : MonoBehaviour
         isFading2 = true;
         startAdjust = true;
         startTimer = Time.time;
+    }
+    void ToNextScene()
+    {
+        SceneManager.LoadScene("Scene3");
+        
     }
 }
