@@ -26,8 +26,8 @@ public class RobotAdder : MonoBehaviour
         theSpawnPoints.Add(new Vector3(-7.8f, 1.05f, -71.9f));
         theSpawnPoints.Add(new Vector3(-115.3f, 1.05f, 83.7f));
         jeepReplica.SetActive(false); // disable it.
-        timeLog = timeSep - 5.0f; // start with 5sec delay
-        goalMan.GetComponent<GoalScript>().Invoke("StartClock", 5.0f);
+        timeLog = -500000; 
+        
     }
 
     // Update is called once per frame
@@ -62,5 +62,11 @@ public class RobotAdder : MonoBehaviour
         {
             i.GetComponent<RobotCars>().Invoke("StopCars", 0.01f); // stop immediately!
         }
+    }
+    public void ready()
+    {
+        timeLog = timeSep - 4.98f; // start with 5sec delay
+        goalMan.GetComponent<GoalScript>().Invoke("StartClock", 5.0f);
+       // timeSep - 5.0f; // start with 5sec delay
     }
 }

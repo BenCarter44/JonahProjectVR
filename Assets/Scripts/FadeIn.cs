@@ -19,11 +19,11 @@ public class FadeIn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startColor = new Color(0f, 0f, 0f, 0f);
-        stopColor = new Color(0f, 0f, 0f, 1f);
+        startColor = new Color(0f, 0f, 0f, 0f);  // transparent screen
+        stopColor = new Color(0f, 0f, 0f, 1f);   // black screen
         startTimer = Time.time;
         isFading = true;
-        Image img = theBlackScreen.GetComponent<Image>();
+        Image img = theBlackScreen.GetComponent<Image>();  // get the panel 
         img.color = stopColor;
         startAdjust = false;
         isFading2 = false;
@@ -39,21 +39,21 @@ public class FadeIn : MonoBehaviour
         }
         if (isFading)
         {
-            if (Time.time > (startTimer + fadeDir))
+            if (Time.time > (startTimer + fadeDir))   // if initial fade-in, if fade is done, stop the fader
             {
                 Image img = theBlackScreen.GetComponent<Image>();
                 img.color = startColor;
                 isFading = false;
                 Invoke("switchFade", waitDelay);
             }
-            else
+            else // if on initial fade-in, do the fade.
             {
                 Image img = theBlackScreen.GetComponent<Image>();
                 Color c = Color.Lerp(stopColor, startColor, (Time.time - startTimer) / fadeDir);
                 img.color = c;
             }
         }
-        if (isFading2)
+        if (isFading2) // the second fade animation.
         {
             if (Time.time > (startTimer + fadeDir))
             {
