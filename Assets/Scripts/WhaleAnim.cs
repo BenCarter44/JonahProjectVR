@@ -90,6 +90,11 @@ public class WhaleAnim : MonoBehaviour
     {
         Debug.Log("whale activated");
         isActive = true;
+        Invoke("startFadeAnim", 5.0f);
+    }
+
+    private void startFadeAnim()
+    {
         startFade = true;
         startTimer=Time.time;
     }
