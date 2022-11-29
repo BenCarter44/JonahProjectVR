@@ -2,13 +2,19 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/[Ll]ibrary/
+/[Ll]ibrary/*
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+
+
+# Added manually - Ben
+!/[Ll]ibrary/BuildPlayer.prefs
+!/[Ll]ibrary/BuildSettings.asset
+
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
