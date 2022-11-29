@@ -8,6 +8,7 @@ public class Overboard : MonoBehaviour
     public Camera whaleCam;
     public GameObject whale;
     private Animator animator;
+    
 
     
 void Start()
@@ -23,4 +24,6 @@ void Start()
         animator.Play("whaleCamCutscene");
         whale.GetComponent<WhaleAnim>().activate();
     }
+
+    
 }
