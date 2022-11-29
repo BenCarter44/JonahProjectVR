@@ -3,7 +3,6 @@
 --- !u!21 &2180264
 Material:
   serializedVersion: 8
-
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -171,11 +170,11 @@ MonoBehaviour:
   materialHashCode: 462855346
   m_Version: 1.1.0
   m_SourceFontFileGUID: e3265ab4bf004d28a9537516768c1c75
-  m_SourceFontFile_EditorRef: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+  m_SourceFontFile_EditorRef: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75,
+    type: 3}
   m_SourceFontFile: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   m_AtlasPopulationMode: 1
   m_FaceInfo:
-    m_FaceIndex: 0
     m_FamilyName: Liberation Sans
     m_StyleName: Regular
     m_PointSize: 86
@@ -195,6 +194,7 @@ MonoBehaviour:
     m_StrikethroughOffset: 18
     m_StrikethroughThickness: 6.298828
     m_TabWidth: 24
+  m_GlyphTable: []
   m_CharacterTable: []
   m_GlyphTable:
   - m_Index: 3
@@ -437,7 +437,6 @@ MonoBehaviour:
   m_AtlasTextureIndex: 0
   m_IsMultiAtlasTexturesEnabled: 0
   m_ClearDynamicDataOnBuild: 1
-
   m_FreeGlyphRects:
   - m_X: 0
     m_Y: 0
@@ -647,6 +646,15 @@ Texture2D:
     Hash: 00000000000000000000000000000000
   m_ForcedFallbackFormat: 4
   m_DownscaleFallback: 0
+  serializedVersion: 2
+  m_Width: 0
+  m_Height: 0
+  m_CompleteImageSize: 0
+  m_TextureFormat: 1
+  m_MipCount: 1
+  m_IsReadable: 1
+  m_StreamingMipmaps: 0
+  m_StreamingMipmapsPriority: 0
   m_IsAlphaChannelOptional: 0
   serializedVersion: 2
   m_Width: 512
