@@ -24,6 +24,9 @@ public class RobotCars : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.destination = theMainPlayer.transform.position;
+        stopCars = true;
+        Debug.Log(transform.position);
+        agent.enabled = true;
     }
 
     // Update is called once per frame
@@ -41,11 +44,17 @@ public class RobotCars : MonoBehaviour
             agent.enabled = false;
             
         }
+       
     }
     public void StopCars()
     {
         Debug.Log("Stopped!");
         stopCars = true;
+    }
+    public void StartCars()
+    {
+        Debug.Log("Start!");
+        stopCars = false;
     }
     /*
     public void OnSelect()

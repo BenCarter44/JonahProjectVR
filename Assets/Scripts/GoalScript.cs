@@ -65,6 +65,12 @@ public class GoalScript : MonoBehaviour
 
         timerCounter.text = "GET READY!";
         infoDialog.text = "Go to the Thunderground!";
+
+
+      //  initialFade = false;
+      //  initialFade2 = false;
+     //   RobotCarsMan.GetComponent<RobotAdder>().Invoke("ready", 0.3f);
+
     }
 
     // Update is called once per frame
