@@ -8,6 +8,7 @@ TagManager:
   - doorB
   - doorC
   - doorD
+  - bookgen
   layers:
   - Default
   - TransparentFX
