@@ -34,15 +34,8 @@ public class DoorManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distB = Vector3.Distance(rotationB, check);
-        float distC = Vector3.Distance(rotationC, check);
-        float distD = Vector3.Distance(rotationD, check2);
-
-        //Debug.Log("distB = " + distB);
-        //Debug.Log("distC = " + distC);
-        //Debug.Log("distD = " + distD);
-
-        if (distB <= 1 && distC <= 1 && distD <= 1)
+        
+        if (rotationB == check && rotationC == check && rotationD == check2)
         {
             npc.SetActive(true);
         }

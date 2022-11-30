@@ -25,7 +25,7 @@ public class CorrectBtnScript : MonoBehaviour
     {
         // finds game objects
         npc = GameObject.Find("NPC");
-        c = GameObject.Find("Canvas");
+        c = GameObject.Find("CanvasNPC");
         self = GameObject.Find("CorrectBtnManager");
 
         // restores active values
