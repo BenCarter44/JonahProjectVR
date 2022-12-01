@@ -35,7 +35,7 @@ public class DoorManagerScript : MonoBehaviour
     void Update()
     {
         
-        if (rotationB == check && rotationC == check && rotationD == check2)
+        if (rotationB == check & rotationC == check & rotationD == check2)
         {
             npc.SetActive(true);
         }
