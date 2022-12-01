@@ -13,10 +13,13 @@ public class RobotCars : MonoBehaviour
 {
 
     public GameObject theMainPlayer;
+    public GameObject scoreCard;
     private NavMeshAgent agent;
-    public float stoppingDistance;
     public GameObject me;
     private bool stopCars = false;
+    private bool entrapped = false;
+    private bool triggerEnt = false;
+    private float minDist;
   //  public static
 
     // Start is called before the first frame update
@@ -25,21 +28,41 @@ public class RobotCars : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.destination = theMainPlayer.transform.position;
         stopCars = true;
-        Debug.Log(transform.position);
-        agent.enabled = true;
+        minDist = 0.0f;
+      //  Debug.Log(transform.position);
+        agent.enabled = false;
+       // Invoke("StopCars",20f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!stopCars && Vector3.Distance(theMainPlayer.transform.position,me.transform.position) > stoppingDistance)
+        if(Vector3.Distance(me.transform.position,theMainPlayer.transform.position) < minDist)
+        {
+            triggerEnt = true;
+        }
+        if(!stopCars && !triggerEnt)
         {
             agent.destination = theMainPlayer.transform.position;
             agent.enabled = true;
+        //    Debug.Log(transform.position);
+            if(entrapped)
+            {
+                scoreCard.GetComponent<Scorecard>().NewCarExit();
+            }
+            entrapped = false;
            // agent.isStopped = false;
         }
         else
         {
+            if (triggerEnt)
+            {
+                if (!entrapped)
+                {
+                    scoreCard.GetComponent<Scorecard>().NewCarEnter();
+                }
+                entrapped = true;
+            }
             //agent.isStopped = true;
             agent.enabled = false;
             
@@ -55,6 +78,33 @@ public class RobotCars : MonoBehaviour
     {
         Debug.Log("Start!");
         stopCars = false;
+    }
+    void OnTriggerEnter(Collider col)
+    {
+        minDist = Vector3.Distance(me.transform.position,theMainPlayer.transform.position);
+
+        if(col.transform.name == "XR Origin")
+        {
+            triggerEnt = true;
+            Debug.Log("HELLOHELLO!!!!!");
+        }
+        else if(col.transform.tag == "bookgen")
+        {
+
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        minDist = 0f;
+        if(col.transform.name == "XR Origin")
+        {
+            Invoke("waitLater",0.25f);
+        }
+    }
+    void waitLater()
+    {
+        triggerEnt = false;
     }
     /*
     public void OnSelect()
