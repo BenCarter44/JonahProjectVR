@@ -47,10 +47,14 @@ public class Story : MonoBehaviour
                 ds.LoadDialogue(currentTalk);
             }
         }
-
+        Invoke("testForce", 5f);
         // ds.GetDialogue("Aaron").setTask(cutscene.GetComponent<StartRain>().startRain());
     }
-
+    void testForce()
+    {
+        isActive = false;
+        cutscene.GetComponent<Overboard>().switchCam();
+    }
     // Update is called once per frame
     void Update()
     {
