@@ -2853,7 +2853,7 @@ GameObject:
   - component: {fileID: 903244293}
   - component: {fileID: 903244292}
   - component: {fileID: 903244291}
-  - component: {fileID: 903244290}
+  - component: {fileID: 903244294}
   m_Layer: 0
   m_Name: First Person Player
   m_TagString: Untagged
@@ -2861,20 +2861,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &903244290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903244289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38b468d69e0564baeb405e697a6938e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 903244292}
-  speed: 5
 --- !u!114 &903244291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2927,6 +2913,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &903244294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903244289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f497e9515b7c25d42bfa822640119c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 293582984}
+  moveSpeed: 5
+  walkSpeed: 3
+  rotateSpeed: 40
+  deadZone: 0.2
 --- !u!114 &1003787373 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4519072910916481790, guid: 6b9d9ac8a594641e88ef7cb21e1085db, type: 3}
