@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WhaleAnim : MonoBehaviour
 {
@@ -79,9 +80,13 @@ public class WhaleAnim : MonoBehaviour
         {
             if(startTimer + fadeDir > Time.time)
             {
-            Image img = theBlackScreen.GetComponent<Image>();
-            Color c = Color.Lerp(startColor, stopColor, (Time.time - startTimer)  / fadeDir);
-            img.color = c;
+                Image img = theBlackScreen.GetComponent<Image>();
+                Color c = Color.Lerp(startColor, stopColor, (Time.time - startTimer)  / fadeDir);
+                img.color = c;
+                if(img.color.a >= 0.9)
+                {
+                    SceneManager.LoadScene("Scene2");
+                }
             }
         }
     }
