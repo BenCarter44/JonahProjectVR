@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 777a283268b85b44d80ec2b4754b8e1b, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 46739463}
   - component: {fileID: 46739466}
   - component: {fileID: 46739467}
+  - component: {fileID: 46739468}
   m_Layer: 0
   m_Name: XR Origin WH
   m_TagString: Untagged
@@ -335,6 +336,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46739462}
   m_Enabled: 1
+--- !u!114 &46739468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46739462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2ee86bdbedd4315a50c4964f4fd9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splashSound: {fileID: 8300000, guid: 5fe15f9f2d36b4fdb98e311a3f948ea6, type: 3}
+  whaleSound: {fileID: 8300000, guid: 05b2897e251594c75ade9ed5cce8fde4, type: 3}
+  whaleCam: {fileID: 46739462}
+  whale: {fileID: 15228882}
 --- !u!1 &211029524
 GameObject:
   m_ObjectHideFlags: 0

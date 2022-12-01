@@ -6,7 +6,7 @@ public class playSplash : MonoBehaviour
 {
     public AudioClip splashSound;
     public AudioClip whaleSound;
-    public Camera whaleCam;
+    public GameObject whaleCam;
     public GameObject whale;
     // Start is called before the first frame update
     void Start()
