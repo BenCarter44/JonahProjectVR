@@ -8,15 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene0.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scene2.unity
     guid: 1863454db499cd14f94ea2d7e4a541bd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scene3.unity
     guid: 5cfb1c7480f4cc34e87017cc5b4fbeca
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scene3b.unity
     guid: d5653a030ddd6374c8404698d7ce0d6f
+  - enabled: 1
+    path: Assets/Scenes/Scene0test.unity
+    guid: 76e0a87c176b54e44ac47a3ecc2205cd
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d83300674c426c34c8ace054024d2d6e, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 07362e7dcfdc84648adeb725407b67f3, type: 2}
