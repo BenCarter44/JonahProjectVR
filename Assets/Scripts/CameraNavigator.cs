@@ -36,7 +36,6 @@ public class CameraNavigator : MonoBehaviour
         //  rotation = (rad / ((2f * Mathf.PI)) * 360.0f;
         
 		vr = new VRCustomInputManager();
-        vr.deadZone = deadZone;
         if (vr == null)
         {
             Debug.Log("No VR Headset!");
