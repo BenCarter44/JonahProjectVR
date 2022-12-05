@@ -48,7 +48,7 @@ public class Story : MonoBehaviour
             }
         }
 
-        // ds.GetDialogue("Aaron").setTask(cutscene.GetComponent<StartRain>().startRain());
+    //     cutscene.GetComponent<StartRain>().startRain();
     }
 
     // Update is called once per frame
