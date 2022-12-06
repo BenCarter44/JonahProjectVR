@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class Overboard : MonoBehaviour
 {
-    public Camera mainCam;
-    public Camera whaleCam;
+    public GameObject mainCam;
+    public GameObject whaleCam;
     public GameObject whale;
+    private Animator animator;
+    
+
     
 void Start()
 {
-    whaleCam.gameObject.SetActive(false);
+ //   whaleCam.SetActive(false);
+    animator = whaleCam.GetComponent<Animator>();
 }
 
     public void switchCam()
     {
-        whaleCam.gameObject.SetActive(true);
-        mainCam.gameObject.SetActive(false);
+        Debug.Log("SWITCH CAM!!!!!!!!!!!!!!!!!!");
+      //  whaleCam.SetActive(true);
+    //    mainCam.SetActive(false);
+        whale.SetActive(true);
+        whaleCam.GetComponent<Animator>().enabled = true;
         whale.GetComponent<WhaleAnim>().activate();
     }
+
+    
 }

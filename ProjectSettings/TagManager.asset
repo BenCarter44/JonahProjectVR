@@ -8,6 +8,7 @@ TagManager:
   - doorB
   - doorC
   - doorD
+  - bookgen
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: General
+    uniqueID: 646199207
+    locked: 0
+  - name: Help
+    uniqueID: 2287460427
     locked: 0

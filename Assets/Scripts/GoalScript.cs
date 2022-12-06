@@ -10,9 +10,8 @@ public class GoalScript : MonoBehaviour
     public GameObject RobotCarsMan;
     public GameObject theBlackScreen;
     public GameObject theBackPanel;
-    public GameObject mainIntro;
     private TextMeshProUGUI timerCounter;
-    private TextMeshProUGUI infoDialog;
+    public GameObject textManager;
 
 
     public GameObject tmCount;
@@ -32,6 +31,7 @@ public class GoalScript : MonoBehaviour
     private bool startAdj;
     private bool initialFade;
     private bool initialFade2;
+    private bool lastFade;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +47,6 @@ public class GoalScript : MonoBehaviour
 
 
         timerCounter = tmCount.GetComponent<TextMeshProUGUI>();
-        infoDialog = infDiag.GetComponent<TextMeshProUGUI>();
         startColor = new Color(0f, 0f, 0f, 0f); // transparent
         stopColor = new Color(0f, 0f, 0f, 1f); // black
         startFade = false;
@@ -62,10 +61,9 @@ public class GoalScript : MonoBehaviour
         img.color = stopColor;
         Image img1 = theBackPanel.GetComponent<Image>();
         img1.color = stopColor;
-
-        timerCounter.text = "GET READY!";
-        infoDialog.text = "Go to the Thunderground!";
-
+        lastFade = false;
+       // infoDialog.text = "Go to the Thunderground!";
+        
 
       //  initialFade = false;
       //  initialFade2 = false;
@@ -114,7 +112,8 @@ public class GoalScript : MonoBehaviour
 
                 initialFade = false;
                 initialFade2 = false;
-                RobotCarsMan.GetComponent<RobotAdder>().Invoke("ready", 0.3f);
+                
+                RobotCarsMan.GetComponent<RobotAdder>().Invoke("ready", 0.2f);
             }
             else
             {
@@ -124,7 +123,7 @@ public class GoalScript : MonoBehaviour
             }
         }
 
-        if (!startFade && !initialFade && !initialFade2)
+        if (!startFade && !initialFade && !initialFade2 && !lastFade)
         {
             if (clockStarted)
             {
@@ -136,7 +135,10 @@ public class GoalScript : MonoBehaviour
                         // time up!
                         startTimer = Time.time;
                         waitTimer = Time.time;
+                        Debug.Log("Here!B");
+                        textManager.GetComponent<TextSwitcherS3>().timeUpText();
                         startFade = true;
+
                     }
                     timerCounter.text = "Time: " + startClockAmount;
                     clockEpicStart = Time.time;
@@ -151,6 +153,7 @@ public class GoalScript : MonoBehaviour
         }
         if (startFade)
         {
+            Debug.Log("START FADE");
             if (!waitReset && Time.time - waitTimer > 5.0f) // 5 sec delay till the end!
             {
                 startTimer = Time.time;
@@ -160,18 +163,40 @@ public class GoalScript : MonoBehaviour
             {
                 if (Time.time > (startTimer + fadeDir))
                 {
-                    Image img = theBlackScreen.GetComponent<Image>();
+                    Image img = theBackPanel.GetComponent<Image>();
                     img.color = stopColor;
-                    Invoke("ToNextScene", 1f);
+                    lastFade = true;
+                    startFade = false;
+                    fadeDir = fadeDir / 2;
+                    startTimer = Time.time;
+                    Debug.Log("Here!a");
+                  //  Invoke("ToNextScene", 1f);
                 }
                 else
                 {
-                    Image img = theBlackScreen.GetComponent<Image>();
+                    Image img = theBackPanel.GetComponent<Image>();
                     Color c = Color.Lerp(startColor, stopColor, (Time.time - startTimer) / fadeDir);
                     img.color = c;
                 }
             }
             
+        }
+        if(lastFade)
+        {
+            textManager.GetComponent<TextSwitcherS3>().trappedText();
+            if (Time.time > (startTimer + fadeDir))
+            {
+                Image img = theBlackScreen.GetComponent<Image>();
+                img.color = stopColor;
+                
+                Invoke("ToNextScene", 0.1f);
+            }
+            else
+            {
+                Image img = theBlackScreen.GetComponent<Image>();
+                Color c = Color.Lerp(startColor, stopColor, (Time.time - startTimer) / fadeDir);
+                img.color = c;
+            }
         }
         
     }
@@ -186,17 +211,32 @@ public class GoalScript : MonoBehaviour
             startTimer = Time.time;
             waitTimer = Time.time;
             startFade = true;
-            
+            lose = false;
+            Debug.Log("Here!C");
+
         }
     }
-    void StartClock()
+    public void EndGame() // called by scorecard
+    {
+        RobotCarsMan.GetComponent<RobotAdder>().Invoke("StopCars", 1);
+        if(!startFade && !lastFade)
+        {
+            startTimer = Time.time;
+            waitTimer = Time.time;
+            textManager.GetComponent<TextSwitcherS3>().trappedText();
+            startFade = true;
+        }
+        Debug.Log("Here!D");
+    }
+    void StartClock() // called by RobotAdder
     {
         if (!clockStarted)
         {
+            textManager.GetComponent<TextSwitcherS3>().plain();
             clockStarted = true;
             clockEpicStart = Time.time;
             timerCounter.text = "Time: " + startClockAmount;
-            mainIntro.SetActive(false);
+          //  mainIntro.SetActive(false);
         }
     }
     void ToNextScene()
@@ -207,7 +247,7 @@ public class GoalScript : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Scene3");
+            SceneManager.LoadScene("Scene2");
         }
     }
 }

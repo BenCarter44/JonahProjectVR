@@ -1,15 +1,15 @@
 [actor]
 Aaron
 Aaron: Hello, my name is Aaron!
-Jonah: Hello, Aaron!
+You: Hello, Aaron!
 Aaron: So, we are going to Nineveh right?
-Jonah: No, we are going to Tarshish. I don't want to go to Nineveh.
+You: No, we are going to Tarshish. I don't want to go to Nineveh.
 Aaron: Okay.
 [end]
 [actor]
 Bach
 Bach: Omg, its raining.
-Jonah: I know. This does not look very good.
+You: I know. This does not look very good.
 Bach: Okay you must be the cause of this storm. I will toss you out now.
-Jonah: okay.
+You: okay.
 [end]

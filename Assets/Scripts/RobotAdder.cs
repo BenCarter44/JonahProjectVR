@@ -8,12 +8,13 @@ public class RobotAdder : MonoBehaviour
 
     private int[] bookExclude = { 6, 7, 11, 12, 13, 17, 18, 19, 23, 24, 25, 28, 36, 37 }; // valid is 1 - 67
     private List<int> bookNum;
+    public GameObject sc;
     public int maxJeeps;
     public float timeSep;
     private float timeLog;
    // public GameObject jeepReplica;
     private List<Vector3> theSpawnPoints;
-    private Stack<GameObject> createdCars;
+    private Stack<GameObject> createdCars; 
     private int createdJeeps = 0;
     public GameObject goalMan;
     private bool stopped = false;
@@ -104,10 +105,11 @@ public class RobotAdder : MonoBehaviour
         Debug.Log(newJeep.transform.position);
 
         newJeep.GetComponent<Rigidbody>().mass = 1000;
-
+        newJeep.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        newJeep.tag = "bookgen";
         newJeep.GetComponent<RobotCars>().me = newJeep;
         newJeep.GetComponent<RobotCars>().theMainPlayer = mainPlayer;
-        newJeep.GetComponent<RobotCars>().stoppingDistance = 8;
+        newJeep.GetComponent<RobotCars>().scoreCard = sc;
 
         newJeep.AddComponent<UnityEngine.AI.NavMeshAgent>();
         newJeep.GetComponent<UnityEngine.AI.NavMeshAgent>().baseOffset = 0f;
