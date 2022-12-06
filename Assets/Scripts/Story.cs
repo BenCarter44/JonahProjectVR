@@ -47,6 +47,8 @@ public class Story : MonoBehaviour
         {
             Debug.Log("No VR Headset!");
         }
+
+    //     cutscene.GetComponent<StartRain>().startRain();
     }
     void testForce()
     {
