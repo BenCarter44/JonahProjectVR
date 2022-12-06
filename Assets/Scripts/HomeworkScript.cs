@@ -4,6 +4,8 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class HomeworkScript : MonoBehaviour
 {
@@ -38,7 +40,11 @@ public class HomeworkScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (nC == 50)
+        {
+            //change scene to classroom
+            SceneManager.LoadScene(1);//placeholder index
+        }
     }
 
     void generateQuestion()
@@ -105,7 +111,7 @@ public class HomeworkScript : MonoBehaviour
 
     bool checkButtons()
     {
-        return !((numA == numB) | (numA == numC) | (numA == numD) | (numB == numC) | (numB == numD) | (numC == numD));
+        return (numA == numB) | (numA == numC) | (numA == numD) | (numB == numC) | (numB == numD) | (numC == numD);
     }
 
     void checkCorrect(float num)
@@ -150,5 +156,15 @@ public class HomeworkScript : MonoBehaviour
     public void ButtonD()
     {
         checkCorrect(numD);
+    }
+
+    public void toScene3()
+    {
+        SceneManager.LoadScene(1);//placeholder index
+    }
+
+    public void toScene4()
+    {
+        SceneManager.LoadScene("Scene4");
     }
 }
