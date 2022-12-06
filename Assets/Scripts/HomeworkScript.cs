@@ -105,8 +105,7 @@ public class HomeworkScript : MonoBehaviour
 
     bool checkButtons()
     {
-
-        return !((numA != numB) | (numA != numC) | (numA != numD) | (numB != numC) | (numB != numD) | (numC != numD));
+        return !((numA == numB) | (numA == numC) | (numA == numD) | (numB == numC) | (numB == numD) | (numC == numD));
     }
 
     void checkCorrect(float num)
