@@ -2717,7 +2717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press F to Talk
+  m_text: Hello!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3341df75ed84783489afd2b045ec4f53, type: 2}
   m_sharedMaterial: {fileID: 5040478683128701921, guid: 3341df75ed84783489afd2b045ec4f53, type: 2}
