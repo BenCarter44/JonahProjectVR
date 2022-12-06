@@ -5,7 +5,6 @@ using UnityEngine;
 public class playSplash : MonoBehaviour
 {
     public AudioClip splashSound;
-    public AudioClip whaleSound;
     public GameObject whaleCam;
     public GameObject whale;
     // Start is called before the first frame update

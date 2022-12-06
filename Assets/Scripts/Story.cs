@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using TMPro;
 
 
 public class Story : MonoBehaviour
 {
-    Ray ray;
-    RaycastHit hit;
+
     public Canvas canvas;
     public DialogueService ds;
-    public Text dialogueTextBox;
-    public Text actionTextBox;
+    public TextMeshProUGUI dialogueTextBox;
+    public TextMeshProUGUI actionTextBox;
 
     private Dialogue currentTalk;
 
     public TextAsset SpeechLines;
 
     public GameObject cutscene;
-
+    private VRCustomInputManager vr;
     private bool isActive = true;
+    private string hitName = "";
 
     // Start is called before the first frame update
     void Start()
     {
+        dialogueTextBox.text = "";
+        actionTextBox.text = "";
         var content = SpeechLines.text;
         var AllWords = content.Split("\n");
         List<string> speechList = new List<string>(AllWords);
@@ -47,8 +50,13 @@ public class Story : MonoBehaviour
                 ds.LoadDialogue(currentTalk);
             }
         }
-        Invoke("testForce", 5f);
-        // ds.GetDialogue("Aaron").setTask(cutscene.GetComponent<StartRain>().startRain());
+     //   Invoke("testForce", 15f);
+    //    cutscene.GetComponent<StartRain>().startRain();
+        vr = new VRCustomInputManager();
+        if (vr == null)
+        {
+            Debug.Log("No VR Headset!");
+        }
     }
     void testForce()
     {
@@ -58,53 +66,70 @@ public class Story : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (isActive)
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray, out hit))
+        {
+          /*  if(vr != null && vr.buttonY && !vr.isError)
             {
-                if(hit.collider.tag == "approachable")
+                if(ds.isTalking == true)
                 {
-                    actionTextBox.GetComponent<Text>().text = "Press F to Talk";
-
-                    if(Input.GetKeyDown("f"))
+                    if (currentTalk.getIsFinished() == true)
                     {
-                        if(ds.isTalking == true)
+                        dialogueTextBox.text = "";
+                        //HARD CODED - THIS CAN BE BETTER
+                        if (currentTalk.getDialogueId() == "Aaron")
                         {
-                            if (currentTalk.getIsFinished() == true)
-                            {
-                                dialogueTextBox.GetComponent<Text>().text = "";
-                                //HARD CODED - THIS CAN BE BETTER
-                                if (currentTalk.getDialogueId() == "Aaron")
-                                {
-                                    
-                                    cutscene.GetComponent<StartRain>().startRain();
-                                }
-                                if (currentTalk.getDialogueId() == "Bach")
-                                {
-                                    isActive = false;
-                                    cutscene.GetComponent<Overboard>().switchCam();
-                                }
-                                ds.isTalking = false;
-                            }
-                            dialogueTextBox.GetComponent<Text>().text = currentTalk.talk();
+                            
+                            cutscene.GetComponent<StartRain>().startRain();
                         }
-                        else
+                        if (currentTalk.getDialogueId() == "Bach")
                         {
-                            currentTalk = ds.GetDialogue(hit.collider.name);
-                            ds.isTalking = true;
-                            dialogueTextBox.GetComponent<Text>().text = currentTalk.talk();
+                            isActive = false;
+                            cutscene.GetComponent<Overboard>().switchCam();
                         }
-                        
-                        print(hit.collider.name);
+                        ds.isTalking = false;
                     }
+                    dialogueTextBox.text = currentTalk.talk();
                 }
                 else
                 {
-                    actionTextBox.GetComponent<Text>().text = " ";
+                    currentTalk = ds.GetDialogue(hitName);
+                    ds.isTalking = true;
+                    dialogueTextBox.text = currentTalk.talk();
                 }
-            }
+            } */
+        }
     }
+    public void OnTriggerEnter(Collider col)
+    {
+        Debug.Log(col.transform.name);
+        if(col.transform.name == "Aaron" || col.transform.name == "Bach")
+        {
+            hitName = col.transform.name;
+            Debug.Log("Aaron Enter!");
+            if(isActive)
+            {
+                actionTextBox.text = "Press Y to Talk";
+            }
+        }
+    }  
+    public void OnTriggerExit(Collider col)
+    {
+        Debug.Log(col.transform.name);
+        if(col.transform.name == "Aaron" || col.transform.name == "Bach")
+        {
+            hitName = col.transform.name;
+            Debug.Log("Aaron Exit!");
+            if(isActive)
+            {
+                actionTextBox.text = " ";
+            }
+        }
+    } 
 }
+
+
+
 
 public class DialogueService
 {

@@ -52,7 +52,10 @@ public class WhaleAnim : MonoBehaviour
         startColor = new Color(0f, 0f, 0f, 0f);
         stopColor = new Color(0f, 0f, 0f, 1f);
         startFade = false;
+        isActive = false;
         startTimer = Time.time;
+        Image img = theBlackScreen.GetComponent<Image>();
+        img.color = startColor;
     }
 
     Vector3 translation = new Vector3(0,10,0);
