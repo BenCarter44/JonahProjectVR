@@ -13,7 +13,6 @@ public class Story : MonoBehaviour
     public DialogueService ds;
     public TextMeshProUGUI dialogueTextBox;
     public TextMeshProUGUI actionTextBox;
-
     private Dialogue currentTalk;
 
     public TextAsset SpeechLines;
@@ -21,37 +20,28 @@ public class Story : MonoBehaviour
     public GameObject cutscene;
     private VRCustomInputManager vr;
     private bool isActive = true;
-    private string hitName = "";
-
+    private bool hitName;
+    private List<List<string>> speechAll;
+    private bool isTalking;
+    private bool aaronGo = false;
+    private bool ready = false;
     // Start is called before the first frame update
     void Start()
     {
         dialogueTextBox.text = "";
         actionTextBox.text = "";
-        var content = SpeechLines.text;
-        var AllWords = content.Split("\n");
-        List<string> speechList = new List<string>(AllWords);
+    //    var content = SpeechLines.text;
+     //   Debug.Log("Item");
+    //    Debug.Log(content.Split("\n"));
+    //    var AllWords = content.Split("\n");
+     //   List<string> speechList = new List<string>(AllWords);
+        
+        refreshText();
+     
 
-        ds = new DialogueService();
-
-        for(int i = 0; i <= speechList.Count-1; i++)
-        {
-            if (speechList[i].Contains("[actor]"))
-            {
-                currentTalk = new Dialogue(speechList[i+1]);
-                
-                i=i+2;
-
-                while(speechList[i] != "[end]")
-                {
-                    currentTalk.AddSpeech(speechList[i]);
-                    i++;
-                }
-                ds.LoadDialogue(currentTalk);
-            }
-        }
-     //   Invoke("testForce", 15f);
+     //   Invoke("testForce", 5f);
     //    cutscene.GetComponent<StartRain>().startRain();
+       aaronGo = false;
         vr = new VRCustomInputManager();
         if (vr == null)
         {
@@ -66,11 +56,24 @@ public class Story : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+     //   Debug.Log(transform.position);   
         if (isActive)
         {
-          /*  if(vr != null && vr.buttonY && !vr.isError)
+            if(vr != null && vr.buttonY && !vr.isError && ready)
             {
+                Debug.Log("A: " + hitName);
+                
+                Debug.Log("B: " + hitName);
+                if(!isTalking)
+                {
+                    Debug.Log("C: " + hitName);
+                    isTalking = true;
+                    Invoke("nextText",0.1f);
+                    
+                }
+                
+                
+                /*
                 if(ds.isTalking == true)
                 {
                     if (currentTalk.getIsFinished() == true)
@@ -89,23 +92,42 @@ public class Story : MonoBehaviour
                         }
                         ds.isTalking = false;
                     }
-                    dialogueTextBox.text = currentTalk.talk();
+                    dialogueTextBox.text = currentTalk.talk();  
                 }
                 else
                 {
+                    Debug.Log("HITNAME '" + hitName + "'");
                     currentTalk = ds.GetDialogue(hitName);
                     ds.isTalking = true;
                     dialogueTextBox.text = currentTalk.talk();
                 }
-            } */
+                */
+            } 
         }
+        else
+        {
+            isTalking = false;
+            dialogueTextBox.text = "";
+        }
+    
     }
     public void OnTriggerEnter(Collider col)
     {
         Debug.Log(col.transform.name);
+        
         if(col.transform.name == "Aaron" || col.transform.name == "Bach")
         {
-            hitName = col.transform.name;
+            GetComponent<AudioSource>().Play();
+            hitName = col.transform.name != "Aaron";
+            
+            if(col.transform.name == "Aaron")
+            {
+                ready = true;
+            }
+            else if(aaronGo)
+            {
+                ready = true;
+            }
             Debug.Log("Aaron Enter!");
             if(isActive)
             {
@@ -115,10 +137,16 @@ public class Story : MonoBehaviour
     }  
     public void OnTriggerExit(Collider col)
     {
+     //   GetComponent<AudioSource>().Play();
         Debug.Log(col.transform.name);
+        
         if(col.transform.name == "Aaron" || col.transform.name == "Bach")
         {
-            hitName = col.transform.name;
+            refreshText();
+            isTalking = false;
+            ready = false;
+            hitName = col.transform.name != "Aaron";
+            
             Debug.Log("Aaron Exit!");
             if(isActive)
             {
@@ -126,6 +154,89 @@ public class Story : MonoBehaviour
             }
         }
     } 
+    public void nextText()
+    {
+        if(!isActive)
+        {
+             isTalking = false;
+        }
+        else
+        {
+            if(isTalking)
+            {
+                actionTextBox.text = " ";
+                dialogueTextBox.text = "";
+                int apple = 0;
+                if(hitName)
+                {
+                    apple = 1;
+                }
+                Debug.Log("D: " + apple);
+                List<string> items = speechAll[apple];
+                if(items.Count != 0)
+                {
+                    dialogueTextBox.text = items[0];
+                    Invoke("nextText",5f);
+                    items.RemoveAt(0);
+                }
+                else
+                {
+                    if (!hitName)
+                    {
+                        isTalking = false;
+                        aaronGo = true;
+                        cutscene.GetComponent<StartRain>().startRain();
+                    }
+                    else if (hitName)
+                    {
+                        isActive = false;
+                        cutscene.GetComponent<Overboard>().switchCam();
+                    }
+                }
+
+            }
+            else
+            {
+                dialogueTextBox.text = "";
+            }
+        }
+    }
+    public void refreshText()
+    {
+        var content = SpeechLines.text;
+        var AllWords = content.Split("\n");
+        List<string> speechList = new List<string>(AllWords);
+        speechAll = new List<List<string>>();
+    //    ds = new DialogueService();
+
+        string myName = "";
+        for(int i = 0; i <= speechList.Count-1; i++)
+        {
+            
+            if (speechList[i].Contains("[actor]"))
+            {
+                List<string> mySpeech = new List<string>();
+                Debug.Log("NEW CURRENT TALK");
+              //  Debug.Log(speechList[i+1]);
+         //       currentTalk = new Dialogue(speechList[i+1]);
+                myName = speechList[i+1]; 
+                i=i+2;
+
+                while(!speechList[i].Contains("[end]"))
+                {
+                    Debug.Log(speechList[i]);
+                    mySpeech.Add(speechList[i]);      
+     //               currentTalk.AddSpeech(speechList[i]);
+                    i++;
+                }
+                
+           //     Debug.Log("KEY: " + myName);
+                
+                speechAll.Add(mySpeech);
+      //          ds.LoadDialogue(currentTalk);
+            }
+        }
+    }
 }
 
 
@@ -170,7 +281,7 @@ public class Dialogue
     private Action task;
     public Dialogue(string id)
     {
-        Debug.Log(id + " has been created");
+        Debug.Log("Piizzzza " + id);
         dialogueid = id;
     }
     public void AddSpeech(string text)
@@ -214,4 +325,5 @@ public class Dialogue
     {
         task();
     }
+    
 }
