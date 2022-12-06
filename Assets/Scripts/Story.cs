@@ -18,6 +18,7 @@ public class Story : MonoBehaviour
     public TextAsset SpeechLines;
 
     public GameObject cutscene;
+   // public GameObject me;
     private VRCustomInputManager vr;
     private bool isActive = true;
     private bool hitName;
@@ -61,6 +62,13 @@ public class Story : MonoBehaviour
      //   Debug.Log(transform.position);   
         if (isActive)
         {
+            Vector3 pos = transform.position;
+            if(pos.y < 3.5f)
+            {
+                Debug.Log("FALL ALERT!!!!");
+                pos.y = 5f;
+                transform.position = pos;
+            }
             if(vr != null && vr.buttonY && !vr.isError && ready)
             {
                 Debug.Log("A: " + hitName);
@@ -119,7 +127,7 @@ public class Story : MonoBehaviour
         
         if(col.transform.name == "Aaron" || col.transform.name == "Bach")
         {
-            GetComponent<AudioSource>().Play();
+            
             hitName = col.transform.name != "Aaron";
             
             if(col.transform.name == "Aaron")
@@ -131,8 +139,9 @@ public class Story : MonoBehaviour
                 ready = true;
             }
             Debug.Log("Aaron Enter!");
-            if(isActive)
+            if(ready)
             {
+                GetComponent<AudioSource>().Play();
                 actionTextBox.text = "Press Y to Talk";
             }
         }
