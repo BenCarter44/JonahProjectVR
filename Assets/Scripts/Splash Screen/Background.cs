@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class Back : MonoBehaviour
+public class Background : MonoBehaviour
 {
 
     //using UnityEngine.SceneManagement;

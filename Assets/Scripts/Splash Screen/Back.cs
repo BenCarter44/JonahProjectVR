@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class Background : MonoBehaviour
+public class Back : MonoBehaviour
 {
 
     //using UnityEngine.SceneManagement;
 
     public void BackSceneChanger()
     {
-        SceneManager.LoadScene("SplashScreenStart");
+        SceneManager.LoadScene("SplashScreenStart 1");
     }
     // Start is called before the first frame update
     void Start()
