@@ -8,14 +8,21 @@ public class Background : MonoBehaviour
 {
 
     //using UnityEngine.SceneManagement;
-
-    public void BackgroundSceneChanger()
-    {
-        SceneManager.LoadScene("Background");
+    public GameObject backgroundPanel;
+    
+    public void hide()
+    {   
+        backgroundPanel.SetActive(false);
     }
-    // Start is called before the first frame update
+    
+    public void show()
+    {   
+        backgroundPanel.SetActive(true);
+    }
+
     void Start()
     {
+        backgroundPanel.SetActive(false);
 
     }
 
