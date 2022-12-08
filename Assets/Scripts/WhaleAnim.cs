@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WhaleAnim : MonoBehaviour
 {
@@ -51,19 +52,25 @@ public class WhaleAnim : MonoBehaviour
         startColor = new Color(0f, 0f, 0f, 0f);
         stopColor = new Color(0f, 0f, 0f, 1f);
         startFade = false;
+        isActive = false;
         startTimer = Time.time;
+        Image img = theBlackScreen.GetComponent<Image>();
+        img.color = startColor;
     }
 
     Vector3 translation = new Vector3(0,10,0);
 
     void Update()
     {
+    //    Debug.Log("PIZZ");
+    //    Debug.Log(isActive);
         if(isActive)
         {
             // Move our position a step closer to the target.
+            
             var step =  speed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, target.position+translation, step);
-            
+        //    Debug.Log(transform.position);
             
             // Check if the position of the cube and sphere are approximately equal.
             if (Vector3.Distance(transform.position, target.position) < 0.001f)
@@ -79,9 +86,13 @@ public class WhaleAnim : MonoBehaviour
         {
             if(startTimer + fadeDir > Time.time)
             {
-            Image img = theBlackScreen.GetComponent<Image>();
-            Color c = Color.Lerp(startColor, stopColor, (Time.time - startTimer)  / fadeDir);
-            img.color = c;
+                Image img = theBlackScreen.GetComponent<Image>();
+                Color c = Color.Lerp(startColor, stopColor, (Time.time - startTimer)  / fadeDir);
+                img.color = c;
+                if(img.color.a >= 0.9)
+                {
+                    SceneManager.LoadScene("Scene2");
+                }
             }
         }
     }
@@ -90,6 +101,9 @@ public class WhaleAnim : MonoBehaviour
     {
         Debug.Log("whale activated");
         isActive = true;
+        Invoke("activate2",0.02f);
+         Debug.Log("UPD");
+        Debug.Log(isActive);
         Invoke("startFadeAnim", 5.0f);
     }
 
@@ -97,5 +111,14 @@ public class WhaleAnim : MonoBehaviour
     {
         startFade = true;
         startTimer=Time.time;
+    }
+    private void activate2()
+    {
+        isActive = true;
+        Invoke("activate3",0.04f);
+    }
+    private void activate3()
+    {
+        isActive = true;
     }
 }

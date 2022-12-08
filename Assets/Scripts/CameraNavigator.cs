@@ -108,6 +108,8 @@ public class CameraNavigator : MonoBehaviour
         }
         */
 
+       
+
 
         //mainCamera.transform.Rotate(0.0f, -radi, 0.0f);
         Vector3 plain1 = new Vector3(axisRight.x * moveSpeed * Time.deltaTime, 0.0f, axisRight.y * moveSpeed * Time.deltaTime);
@@ -123,6 +125,7 @@ public class CameraNavigator : MonoBehaviour
         
         Vector3 comboDir = new Vector3(Mathf.Cos(rotation) * plain1.x - Mathf.Sin(rotation) * plain1.z,0.0f, Mathf.Sin(rotation) * plain1.x + Mathf.Cos(rotation) * plain1.z);
         mainCamera.transform.Translate(comboDir * -1);
+    //    mainCamera.transform.position = comboDir * -1 + mainCamera.transform.position;
     //    Debug.Log("P: " + mainCamera.transform.position.x + " : " + mainCamera.transform.position.z);
 
        // Vector3 plain = new Vector3(axisLeft.x * moveSpeed * Time.deltaTime, 0.0f, axisLeft.y * moveSpeed * Time.deltaTime); // plain!
@@ -131,6 +134,7 @@ public class CameraNavigator : MonoBehaviour
         //   Vector3 gamepad3D = new Vector3(gamepad.leftStick.x.ReadValue(), 0.0, gamepad.leftStick.y.ReadValue()); // for the future with cybershoes.
            Vector3 gamepad3D = GetCybershoesInput();
             mainCamera.transform.Translate(gamepad3D * Time.deltaTime * walkHold);
+        //    mainCamera.transform.position = gamepad3D * Time.deltaTime * walkHold + mainCamera.transform.position;
          
 
     }
@@ -139,7 +143,7 @@ public class CameraNavigator : MonoBehaviour
         var gamepad = UnityEngine.InputSystem.Gamepad.current;
         if (gamepad == null)
         {
-            Debug.Log("No gamepad found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        //    Debug.Log("No gamepad found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             return Vector3.zero;
         } 
         Vector2 shoeMovement = new Vector2(gamepad.leftStick.x.ReadValue(), gamepad.leftStick.y.ReadValue());
