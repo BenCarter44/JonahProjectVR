@@ -5,15 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SplashScreenStart 1.unity
-    guid: 1ee3c12f42e657b42a5c59bda305e764
-  - enabled: 1
-    path: Assets/Scenes/Help.unity
-    guid: 76e0a87c176b54e44ac47a3ecc2205cd
-  - enabled: 1
-    path: Assets/Scenes/Scene0.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d83300674c426c34c8ace054024d2d6e, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 0bd8cb5fa20e5b941979ac86ce518d7e, type: 2}
