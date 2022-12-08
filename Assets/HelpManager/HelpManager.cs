@@ -36,7 +36,7 @@ public class HelpManager : MonoBehaviour
     void Update()
     {
         
-        if (vr != null && vr.buttonB && !vr.isError)
+        if (vr != null && vr.buttonX && !vr.isError)
         {
             if(!isHelp && btnRelease)
             {
