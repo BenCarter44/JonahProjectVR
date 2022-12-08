@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DoorManagerScript : MonoBehaviour
 {
@@ -40,36 +41,54 @@ public class DoorManagerScript : MonoBehaviour
         }
     }
 
+    IEnumerator OpenDoorOverTime(float duration, GameObject go, Vector3 start, Vector3 end)
+    {
+        float time = 0.0f;
+        Vector3 lerpRotate;
+
+        do
+        {
+            lerpRotate = Vector3.Lerp(start, end, time / duration);
+            go.transform.GetChild(0).eulerAngles = lerpRotate;
+
+            time += Time.deltaTime;
+            yield return null;
+        } while (time <= duration);
+    }
+
     public void openDoorB()
     {
         GetComponent<AudioSource>().Play();
-
+        GameObject door = GameObject.FindWithTag("doorB");
+        Vector3 closedRotate = door.transform.GetChild(0).eulerAngles;
         Vector3 openRotate = new Vector3(-90, -90, 0);
 
-        GameObject door = GameObject.FindWithTag("doorB");
-        door.transform.GetChild(0).eulerAngles = openRotate;
+        StartCoroutine(OpenDoorOverTime(3f, door, closedRotate, openRotate));
+
         openCount++;
     }
 
     public void openDoorC()
     {
         GetComponent<AudioSource>().Play();
-
+        GameObject door = GameObject.FindWithTag("doorC");
+        Vector3 closedRotate = door.transform.GetChild(0).eulerAngles;
         Vector3 openRotate = new Vector3(-90, -90, 0);
 
-        GameObject door = GameObject.FindWithTag("doorC");
-        door.transform.GetChild(0).eulerAngles = openRotate;
+        StartCoroutine(OpenDoorOverTime(3f, door, closedRotate, openRotate));
+
         openCount++;
     }
 
     public void openDoorD()
     {
         GetComponent<AudioSource>().Play();
-
+        GameObject door = GameObject.FindWithTag("doorD");
+        Vector3 closedRotate = door.transform.GetChild(0).eulerAngles;
         Vector3 openRotate = new Vector3(-90, 0, 0);
 
-        GameObject door = GameObject.FindWithTag("doorD");
-        door.transform.GetChild(0).eulerAngles = openRotate;
+        StartCoroutine(OpenDoorOverTime(3f, door, closedRotate, openRotate));
+
         openCount++;
     }
 }
