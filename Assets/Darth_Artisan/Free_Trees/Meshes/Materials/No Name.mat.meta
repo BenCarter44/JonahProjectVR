@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Darth_Artisan/Free_Trees/Meshes/Materials/No Name.mat.meta
 guid: 98189d553b7404d8290e447fb600ac6f
 timeCreated: 1508930463
+=======
+guid: cb752ddf9521c714eb0529474657b0fe
+timeCreated: 1461171355
+>>>>>>> main:Assets/FloatingEntities/Models/Drum_empty.prefab.meta
 licenseType: Store
 NativeFormatImporter:
   userData: 
