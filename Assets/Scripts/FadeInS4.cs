@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class FadeInS4 : MonoBehaviour
 {
     public GameObject theBlackScreen;
+    public GameObject theFinalie;
     private Color startColor;
     private Color stopColor;
     public float fadeDir;
@@ -27,6 +28,7 @@ public class FadeInS4 : MonoBehaviour
         img.color = stopColor;
         startAdjust = false;
         isFading2 = false;
+        theFinalie.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class FadeInS4 : MonoBehaviour
                 Image img = theBlackScreen.GetComponent<Image>();
                 img.color = startColor;
                 isFading = false;
+                theFinalie.SetActive(true);
               //  Invoke("switchFade", waitDelay);
             }
             else // if on initial fade-in, do the fade.
@@ -54,5 +57,9 @@ public class FadeInS4 : MonoBehaviour
             }
         }
         
+    }
+    public void SceneReturn()
+    {
+        SceneManager.LoadScene("SplashScreenStart 1");
     }
 }
