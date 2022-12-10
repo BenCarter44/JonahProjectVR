@@ -34,7 +34,7 @@ public class DoorManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // not sure why but first part of condition does not work
+        // not sure why but first part of condition does not work second part is a failsafe
         if ((rotationB == check) & (rotationC == check) & (rotationD == check2) | (openCount == 3))
         {
             npc.SetActive(true);
@@ -46,6 +46,16 @@ public class DoorManagerScript : MonoBehaviour
         float time = 0.0f;
         Vector3 lerpRotate;
 
+
+        do
+        {
+            lerpRotate = new Vector3(start.x, Mathf.Lerp(start.y, end.y, time / duration), start.z) ;
+            go.transform.GetChild(0).eulerAngles = lerpRotate;
+
+            time += Time.deltaTime;
+            yield return null;
+        } while (time <= duration);
+        /* old code that doesn't work
         do
         {
             lerpRotate = Vector3.Lerp(start, end, time / duration);
@@ -54,6 +64,7 @@ public class DoorManagerScript : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         } while (time <= duration);
+        */
     }
 
     public void openDoorB()
@@ -65,6 +76,7 @@ public class DoorManagerScript : MonoBehaviour
 
         StartCoroutine(OpenDoorOverTime(3f, door, closedRotate, openRotate));
 
+        //door.transform.GetChild(0).eulerAngles = openRotate;
         openCount++;
     }
 
@@ -77,6 +89,7 @@ public class DoorManagerScript : MonoBehaviour
 
         StartCoroutine(OpenDoorOverTime(3f, door, closedRotate, openRotate));
 
+        //door.transform.GetChild(0).eulerAngles = openRotate;
         openCount++;
     }
 
@@ -89,6 +102,7 @@ public class DoorManagerScript : MonoBehaviour
 
         StartCoroutine(OpenDoorOverTime(3f, door, closedRotate, openRotate));
 
+        //door.transform.GetChild(0).eulerAngles = openRotate;
         openCount++;
     }
 }
