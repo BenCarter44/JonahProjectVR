@@ -1,0 +1,146 @@
+newmtl Part129Mtl
+Material Color
+Ka 0.329729 0.284452 0.201096
+Kd 0.329729 0.284452 0.201096
+Ks 0.0206889 0.017848 0.0126178 
+
+d 1
+
+Ns 0
+
+newmtl Part121Mtl
+Material Color
+Ka 0 0 0
+Kd 0 0 0
+Ks 0 0 0 
+
+d 1
+
+Ns 0
+
+newmtl Part90Mtl
+Material Color
+Ka 0.329729 0.284452 0.201096
+Kd 0.329729 0.284452 0.201096
+Ks 0.0206889 0.017848 0.0126178 
+
+d 1
+
+Ns 0
+
+map_Ka Part83_diff.png
+map_Kd Part83_diff.png
+map_d Part83_diff.png
+
+map_Bump Part83_nmap.png
+
+map_Ns Part83_spec.png
+
+newmtl Part83Mtl
+Material Color
+Ka 0.358654 0.113921 0.0315514
+Kd 0.358654 0.113921 0.0315514
+Ks 0.0225038 0.00714798 0.0019797 
+
+d 1
+
+Ns 0
+
+map_Ka Part83_diff.png
+map_Kd Part83_diff.png
+map_d Part83_diff.png
+
+map_Bump Part83_nmap.png
+
+map_Ns Part83_spec.png
+
+newmtl Part82Mtl
+Material Color
+Ka 0.103634 0.108711 0.14198
+Kd 0.103634 0.108711 0.14198
+Ks 0.0690894 0.0724741 0.0946535 
+
+d 1
+
+Ns 255
+
+map_Ka Part81_diff.png
+map_Kd Part81_diff.png
+map_d Part81_diff.png
+
+map_Bump Part81_nmap.png
+
+map_Ns Part81_spec.png
+
+newmtl Part6Mtl
+Material Color
+Ka 0.22331 0.227137 0.2468
+Kd 0.22331 0.227137 0.2468
+Ks 0.0140116 0.0142517 0.0154855 
+
+d 1
+
+Ns 0
+
+newmtl Part122Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Part122_diff.png
+map_Kd Part122_diff.png
+map_d Part122_diff.png
+
+newmtl Part1Mtl
+Material Color
+Ka 0.0315514 0.0315514 0.0342302
+Kd 0.0315514 0.0315514 0.0342302
+Ks 0.0019797 0.0019797 0.00214778 
+
+d 1
+
+Ns 0
+
+newmtl Part81Mtl
+Material Color
+Ka 0.353741 0.363604 0.420508
+Kd 0.353741 0.363604 0.420508
+Ks 0.235827 0.242403 0.280339 
+
+d 1
+
+Ns 255
+
+map_Ka Part81_diff.png
+map_Kd Part81_diff.png
+map_d Part81_diff.png
+
+map_Bump Part81_nmap.png
+
+map_Ns Part81_spec.png
+
+newmtl Part131Mtl
+Material Color
+Ka 0.84337 0.645555 0.197516
+Kd 0.84337 0.645555 0.197516
+Ks 0.0529173 0.0405054 0.0123932 
+
+d 1
+
+Ns 0
+
+newmtl Part4Mtl
+Material Color
+Ka 0.00715504 0.018913 0.0315514
+Kd 0.00715504 0.018913 0.0315514
+Ks 0.000448943 0.0011867 0.0019797 
+
+d 1
+
+Ns 0
+

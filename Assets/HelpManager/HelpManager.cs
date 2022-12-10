@@ -27,7 +27,7 @@ public class HelpManager : MonoBehaviour
         vr = new VRCustomInputManager();
         if (vr == null)
         {
-            Debug.Log("No VR Headset!");
+          //  Debug.Log("No VR Headset!");
         }
         
     }
@@ -35,7 +35,7 @@ public class HelpManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(vr.buttonX && !vr.isError);
+        
         if (vr != null && vr.buttonX && !vr.isError)
         {
             if(!isHelp && btnRelease)

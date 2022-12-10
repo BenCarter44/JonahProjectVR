@@ -1,1 +1,4 @@
 LightingData.asset filter=lfs diff=lfs merge=lfs -text
+map.obj filter=lfs diff=lfs merge=lfs -text
+map.obj;LightingData.asset filter=lfs diff=lfs merge=lfs -text
+map2.obj filter=lfs diff=lfs merge=lfs -text
