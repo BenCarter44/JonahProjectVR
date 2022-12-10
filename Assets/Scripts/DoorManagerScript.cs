@@ -49,22 +49,12 @@ public class DoorManagerScript : MonoBehaviour
 
         do
         {
-            lerpRotate = new Vector3(start.x, Mathf.Lerp(start.y, end.y, time / duration), start.z) ;
+            lerpRotate = new Vector3(start.x, Mathf.Lerp(start.y, end.y, time / duration), start.z);
             go.transform.GetChild(0).eulerAngles = lerpRotate;
 
             time += Time.deltaTime;
             yield return null;
         } while (time <= duration);
-        /* old code that doesn't work
-        do
-        {
-            lerpRotate = Vector3.Lerp(start, end, time / duration);
-            go.transform.GetChild(0).eulerAngles = lerpRotate;
-
-            time += Time.deltaTime;
-            yield return null;
-        } while (time <= duration);
-        */
     }
 
     public void openDoorB()
@@ -74,9 +64,10 @@ public class DoorManagerScript : MonoBehaviour
         Vector3 closedRotate = door.transform.GetChild(0).eulerAngles;
         Vector3 openRotate = new Vector3(-90, -90, 0);
 
-        StartCoroutine(OpenDoorOverTime(3f, door, closedRotate, openRotate));
+        StartCoroutine(OpenDoorOverTime(2f, door, closedRotate, openRotate));
 
-        //door.transform.GetChild(0).eulerAngles = openRotate;
+        Collider c = door.GetComponent<Collider>();
+        c.enabled = !c.enabled;
         openCount++;
     }
 
@@ -87,9 +78,10 @@ public class DoorManagerScript : MonoBehaviour
         Vector3 closedRotate = door.transform.GetChild(0).eulerAngles;
         Vector3 openRotate = new Vector3(-90, -90, 0);
 
-        StartCoroutine(OpenDoorOverTime(3f, door, closedRotate, openRotate));
+        StartCoroutine(OpenDoorOverTime(2f, door, closedRotate, openRotate));
 
-        //door.transform.GetChild(0).eulerAngles = openRotate;
+        Collider c = door.GetComponent<Collider>();
+        c.enabled = !c.enabled;
         openCount++;
     }
 
@@ -100,9 +92,10 @@ public class DoorManagerScript : MonoBehaviour
         Vector3 closedRotate = door.transform.GetChild(0).eulerAngles;
         Vector3 openRotate = new Vector3(-90, 0, 0);
 
-        StartCoroutine(OpenDoorOverTime(3f, door, closedRotate, openRotate));
+        StartCoroutine(OpenDoorOverTime(2f, door, closedRotate, openRotate));
 
-        //door.transform.GetChild(0).eulerAngles = openRotate;
+        Collider c = door.GetComponent<Collider>();
+        c.enabled = !c.enabled;
         openCount++;
     }
 }
