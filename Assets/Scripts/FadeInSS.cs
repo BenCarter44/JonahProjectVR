@@ -5,10 +5,9 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class FadeInS4 : MonoBehaviour
+public class FadeInSS : MonoBehaviour
 {
     public GameObject theBlackScreen;
-    public GameObject theFinalie;
     private Color startColor;
     private Color stopColor;
     public float fadeDir;
@@ -17,6 +16,8 @@ public class FadeInS4 : MonoBehaviour
     private bool isFading;
     private bool isFading2;
     private bool startAdjust;
+    private bool sceneSel;
+    public GameObject camBug;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,8 @@ public class FadeInS4 : MonoBehaviour
         img.color = stopColor;
         startAdjust = false;
         isFading2 = false;
-        theFinalie.SetActive(true);
+        sceneSel = false;
+        camBug.SetActive(true);
     }
 
     // Update is called once per frame
@@ -46,8 +48,7 @@ public class FadeInS4 : MonoBehaviour
                 Image img = theBlackScreen.GetComponent<Image>();
                 img.color = startColor;
                 isFading = false;
-                theFinalie.SetActive(true);
-              //  Invoke("switchFade", waitDelay);
+               // Invoke("switchFade", waitDelay);
             }
             else // if on initial fade-in, do the fade.
             {
@@ -56,10 +57,46 @@ public class FadeInS4 : MonoBehaviour
                 img.color = c;
             }
         }
-        
+        if (isFading2) // the second fade animation.
+        {
+            if (Time.time > (startTimer + fadeDir))
+            {
+                Image img = theBlackScreen.GetComponent<Image>();
+                img.color = stopColor;
+                isFading2 = false;
+                Invoke("ToNextScene", 1f);
+            }
+            else
+            {
+                Image img = theBlackScreen.GetComponent<Image>();
+                Color c = Color.Lerp(startColor, stopColor, (Time.time - startTimer) / fadeDir);
+                img.color = c;
+            }
+        }
     }
-    public void SceneReturn()
+    public void EndFadeToScene0()
     {
-        SceneManager.LoadScene("SplashScreenStart 1");
+        sceneSel = false;
+        isFading2 = true;
+        startAdjust = true;
+        startTimer = Time.time;
+    }
+   /* public void EndFadeToScene4()
+    {
+        sceneSel = true;
+        isFading2 = true;
+        startAdjust = true;
+        startTimer = Time.time;
+    } */
+    void ToNextScene()
+    {
+        if (sceneSel)
+        {
+            SceneManager.LoadScene("Scene0");
+        }
+        else
+        {
+            SceneManager.LoadScene("Scene0");
+        }
     }
 }

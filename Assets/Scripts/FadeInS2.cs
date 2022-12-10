@@ -11,7 +11,7 @@ public class FadeInS2 : MonoBehaviour
     private Color startColor;
     private Color stopColor;
     public float fadeDir;
-    public float waitDelay;
+   // public float waitDelay;
     private float startTimer;
     private bool isFading;
     private bool isFading2;
