@@ -43,7 +43,7 @@ public class HomeworkScript : MonoBehaviour
         if (nC == 50)
         {
             //change scene to classroom
-            SceneManager.LoadScene(1);//placeholder index
+            SceneManager.LoadScene("Scene4");//placeholder index
         }
     }
 
@@ -53,11 +53,10 @@ public class HomeworkScript : MonoBehaviour
 
         // solve for x
         // y = m * x + b
-        // x = (y - b) / m
-        answer = (float)rnd.Next(1, 10);
+        answer = (float) rnd.Next(1, 10);
         float m = (float) rnd.Next(1, 10);
         float b = (float) rnd.Next(1, 10);
-        float y = (float)m * answer + b;
+        float y = (float) m * answer + b;
 
         question.text = y.ToString() + " = " + m.ToString() + " * x " + " + " + b.ToString();
 
@@ -156,15 +155,5 @@ public class HomeworkScript : MonoBehaviour
     public void ButtonD()
     {
         checkCorrect(numD);
-    }
-
-    public void toScene3()
-    {
-        SceneManager.LoadScene(1);//placeholder index
-    }
-
-    public void toScene4()
-    {
-        SceneManager.LoadScene("Scene4");
     }
 }

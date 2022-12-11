@@ -11,12 +11,14 @@ public class FadeInS2 : MonoBehaviour
     private Color startColor;
     private Color stopColor;
     public float fadeDir;
-    public float waitDelay;
+   // public float waitDelay;
     private float startTimer;
     private bool isFading;
     private bool isFading2;
     private bool startAdjust;
     private bool sceneSel;
+
+    public GameObject cameraUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,7 @@ public class FadeInS2 : MonoBehaviour
         startAdjust = false;
         isFading2 = false;
         sceneSel = false;
+        cameraUI.SetActive(true);
     }
 
     // Update is called once per frame

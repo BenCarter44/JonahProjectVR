@@ -21,7 +21,7 @@ public class Scorecard : MonoBehaviour
             // trapped!
             goalScript.GetComponent<GoalScript>().EndGame();
         }
-        Debug.Log(currentEntrapment);
+    //    Debug.Log(currentEntrapment);
     }
     public void NewCarEnter()
     {
