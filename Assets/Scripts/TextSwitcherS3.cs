@@ -11,7 +11,7 @@ public class TextSwitcherS3 : MonoBehaviour
     public TextMeshProUGUI mainIntroText;
     public TextMeshProUGUI mainIntroTextSub;
     // Start is called before the first frame update
-    void Start() // Your  friends are at the Thunderground. You told them you will be there in one minute. But beware of your homework that is hunting you down. Press X for additional help.
+    void Start()
     {
         missionBoard.text = "Meet your friends at the Thunderground!";
         missionBoardSub.text = "Watch out for your homework!";
