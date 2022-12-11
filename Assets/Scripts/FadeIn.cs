@@ -78,7 +78,7 @@ public class FadeIn : MonoBehaviour
     }
     void ToNextScene()
     {
-        SceneManager.LoadScene("Scene3");
+        SceneManager.LoadScene("Scene2");
         
     }
 }
