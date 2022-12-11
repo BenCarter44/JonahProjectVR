@@ -9,10 +9,10 @@ public class RainBook : MonoBehaviour
 
     private int[] bookExclude = { 6, 7, 11, 12, 13, 17, 18, 19, 23, 24, 25, 28, 36, 37 }; // valid is 1 - 67
     private List<int> bookNum;
-    private int maxX = -150;
-    private int maxZ = 92;
-    private int minX = 150;
-    private int minZ = -92;
+    private int maxX = 120;
+    private int maxZ = 211;
+    private int minX = -212;
+    private int minZ = -177;
 
     public GameObject mainPlayer;
     public float limitRadius;
