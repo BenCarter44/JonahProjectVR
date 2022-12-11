@@ -28,7 +28,6 @@ public class DoorManagerScript : MonoBehaviour
         rotationD = doorD.transform.GetChild(0).eulerAngles;
         check = new Vector3(-90, -90, 0);
         check2 = new Vector3(-90, 0, 0);
-
     }
 
     // Update is called once per frame
@@ -97,5 +96,10 @@ public class DoorManagerScript : MonoBehaviour
         Collider c = door.GetComponent<Collider>();
         c.enabled = !c.enabled;
         openCount++;
+    }
+
+    public void playVoiceOver()
+    {
+        npc.GetComponent<AudioSource>().Play();
     }
 }
