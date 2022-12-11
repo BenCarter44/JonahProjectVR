@@ -28,7 +28,7 @@ public class FadeInS4 : MonoBehaviour
         img.color = stopColor;
         startAdjust = false;
         isFading2 = false;
-        theFinalie.SetActive(false);
+        theFinalie.SetActive(true);
     }
 
     // Update is called once per frame

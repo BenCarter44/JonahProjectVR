@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class FadeInS2 : MonoBehaviour
+public class FadeInSS : MonoBehaviour
 {
     public GameObject theBlackScreen;
     private Color startColor;
@@ -17,8 +17,7 @@ public class FadeInS2 : MonoBehaviour
     private bool isFading2;
     private bool startAdjust;
     private bool sceneSel;
-
-    public GameObject cameraUI;
+    public GameObject camBug;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +30,7 @@ public class FadeInS2 : MonoBehaviour
         startAdjust = false;
         isFading2 = false;
         sceneSel = false;
-        cameraUI.SetActive(true);
+        camBug.SetActive(true);
     }
 
     // Update is called once per frame
@@ -75,29 +74,29 @@ public class FadeInS2 : MonoBehaviour
             }
         }
     }
-    public void EndFadeToScene3()
+    public void EndFadeToScene0()
     {
         sceneSel = false;
         isFading2 = true;
         startAdjust = true;
         startTimer = Time.time;
     }
-    public void EndFadeToScene4()
+   /* public void EndFadeToScene4()
     {
         sceneSel = true;
         isFading2 = true;
         startAdjust = true;
         startTimer = Time.time;
-    }
+    } */
     void ToNextScene()
     {
         if (sceneSel)
         {
-            SceneManager.LoadScene("Scene4");
+            SceneManager.LoadScene("Scene0");
         }
         else
         {
-            SceneManager.LoadScene("Scene3");
+            SceneManager.LoadScene("Scene0");
         }
     }
 }

@@ -8,7 +8,8 @@ public class StartScript : MonoBehaviour
 {
     public void StartSceneChanger()
     {
-        SceneManager.LoadScene("Scene0");
+        GetComponent<FadeInSS>().EndFadeToScene0();
+      //  SceneManager.LoadScene("Scene0");
     }
     // Start is called before the first frame update
     void Start()
