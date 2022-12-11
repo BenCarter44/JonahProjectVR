@@ -12,6 +12,7 @@ public class GoalScript : MonoBehaviour
     public GameObject theBackPanel;
     private TextMeshProUGUI timerCounter;
     public GameObject textManager;
+    public GameObject voiceOver;
 
 
     public GameObject tmCount;
@@ -63,7 +64,7 @@ public class GoalScript : MonoBehaviour
         img1.color = stopColor;
         lastFade = false;
        // infoDialog.text = "Go to the Thunderground!";
-        
+        voiceOver.SetActive(false);
 
       //  initialFade = false;
       //  initialFade2 = false;
@@ -93,6 +94,7 @@ public class GoalScript : MonoBehaviour
                    
                     initialFade = false;
                     initialFade2 = true;
+                    voiceOver.SetActive(true);
                     startTimer = Time.time;
                 }
                 else
