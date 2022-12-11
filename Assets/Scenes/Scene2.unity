@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43424085, g: 0.48113, b: 0.56203634, a: 1}
+  m_IndirectSpecularColor: {r: 0.43424192, g: 0.4811309, b: 0.56203675, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: f8a15a1e92368c54e8b751e769708fa0, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8dcb6ea63cb42d74d8b7fbd46d30cce3, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 26d7a82e8b8301e47b7d06e95f9fb97e, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -465,7 +465,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theBlackScreen: {fileID: 1408172954}
   fadeDir: 3
-  waitDelay: 0
   cameraUI: {fileID: 1272560794}
 --- !u!114 &55318176
 MonoBehaviour:
@@ -10912,7 +10911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558823571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1176, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12664,7 +12663,7 @@ MonoBehaviour:
   m_OriginBaseGameObject: {fileID: 1842628013}
   m_CameraFloorOffsetObject: {fileID: 1558823571}
   m_RequestedTrackingOriginMode: 0
-  m_CameraYOffset: 1.1176
+  m_CameraYOffset: 0
 --- !u!4 &1842628015
 Transform:
   m_ObjectHideFlags: 0
@@ -12673,7 +12672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842628013}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -5.475, y: -0.734, z: -4.637}
+  m_LocalPosition: {x: -5.308, y: -0.693, z: -4.193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12696,7 +12695,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &1842628018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12708,8 +12707,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.33333334, y: 1, z: 0.33333334}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1842628019
 MonoBehaviour:
   m_ObjectHideFlags: 0
