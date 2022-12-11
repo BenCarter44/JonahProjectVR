@@ -18,8 +18,8 @@ public class HelpManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("PIZZA");
-        Debug.Log("PIZZA");
+    //    Debug.Log("PIZZA");
+   //     Debug.Log("PIZZA");
         isHelp = false;
         btnRelease = true;
         theHelpImage.SetActive(false);

@@ -197,9 +197,6 @@ public class Story : MonoBehaviour
         {
             if(isTalking)
             {
-                //
-
-
                 actionTextBox.text = " ";
                 dialogueTextBox.text = "";
                 int apple = 0;
