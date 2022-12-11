@@ -17,6 +17,7 @@ public class FadeInS4 : MonoBehaviour
     private bool isFading;
     private bool isFading2;
     private bool startAdjust;
+    public GameObject soundPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +30,12 @@ public class FadeInS4 : MonoBehaviour
         startAdjust = false;
         isFading2 = false;
         theFinalie.SetActive(true);
+        Invoke("playSound", 2f);
     }
-
+    void playSound()
+    {
+        soundPlayer.SetActive(true);
+    }
     // Update is called once per frame
     void Update()
     {

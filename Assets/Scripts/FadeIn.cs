@@ -16,6 +16,7 @@ public class FadeIn : MonoBehaviour
     private bool isFading;
     private bool isFading2;
     private bool startAdjust;
+    public GameObject soundTrigger;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +28,12 @@ public class FadeIn : MonoBehaviour
         img.color = stopColor;
         startAdjust = false;
         isFading2 = false;
+        Invoke("soundPlay", 2f);
     }
-
+    void soundPlay()
+    {
+        soundTrigger.SetActive(true);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -44,6 +49,7 @@ public class FadeIn : MonoBehaviour
                 Image img = theBlackScreen.GetComponent<Image>();
                 img.color = startColor;
                 isFading = false;
+                
                 Invoke("switchFade", waitDelay);
             }
             else // if on initial fade-in, do the fade.
