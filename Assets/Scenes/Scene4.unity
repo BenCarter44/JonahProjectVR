@@ -1043,8 +1043,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4286282619
+  m_fontColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2804,7 +2804,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c50de92daefe3164088fd0a54981594d, type: 2}
+  - {fileID: 2100000, guid: 75ab15f3d8cf6f24687ad2b036b4d695, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2841,11 +2841,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083803522}
-  m_LocalRotation: {x: -0, y: 0.010480609, z: -0, w: 0.9999451}
+  m_LocalRotation: {x: -0, y: -0.12831716, z: -0, w: -0.9917332}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 200, y: 200, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 1.201, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -345.255, z: 0}
