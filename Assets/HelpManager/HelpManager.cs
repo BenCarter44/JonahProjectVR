@@ -38,7 +38,8 @@ public class HelpManager : MonoBehaviour
         
         if (vr != null && vr.buttonX && !vr.isError)
         {
-            if(!isHelp && btnRelease)
+            isHelp = true;
+         /*   if(!isHelp && btnRelease)
             {
                 isHelp = true;
                 btnRelease = false;
@@ -48,11 +49,12 @@ public class HelpManager : MonoBehaviour
             {
                 isHelp = false;
                 btnRelease = false;
-            }
+            } */
         }
         else
         {
-            btnRelease = true;
+            isHelp = false;
+           // btnRelease = true;
         }
 
         // checkrun

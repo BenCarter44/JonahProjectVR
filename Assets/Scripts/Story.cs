@@ -17,6 +17,9 @@ public class Story : MonoBehaviour
 
     public TextAsset SpeechLines;
 
+    public GameObject AudioClip1;
+    public GameObject AudioClip2;
+
     public GameObject cutscene;
    // public GameObject me;
     private VRCustomInputManager vr;
@@ -26,9 +29,16 @@ public class Story : MonoBehaviour
     private bool isTalking;
     private bool aaronGo = false;
     private bool ready = false;
+    private bool audioFlag = false;
+    
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+
         dialogueTextBox.text = "";
         actionTextBox.text = "";
     //    var content = SpeechLines.text;
@@ -48,7 +58,6 @@ public class Story : MonoBehaviour
         {
             Debug.Log("No VR Headset!");
         }
-
     //     cutscene.GetComponent<StartRain>().startRain();
     }
     void testForce()
@@ -71,11 +80,14 @@ public class Story : MonoBehaviour
             }
             if(vr != null && vr.buttonY && !vr.isError && ready)
             {
+                //testSource.PlayOneShot(clip1);
+
                 Debug.Log("A: " + hitName);
                 
                 Debug.Log("B: " + hitName);
                 if(!isTalking)
                 {
+                    
                     Debug.Log("C: " + hitName);
                     isTalking = true;
                     Invoke("nextText",0.1f);
@@ -132,6 +144,7 @@ public class Story : MonoBehaviour
             
             if(col.transform.name == "Aaron")
             {
+
                 ready = true;
             }
             else if(aaronGo)
@@ -141,8 +154,10 @@ public class Story : MonoBehaviour
             Debug.Log("Aaron Enter!");
             if(ready)
             {
-                GetComponent<AudioSource>().Play();
+                
+        
                 actionTextBox.text = "Press Y to Talk";
+               
             }
         }
     }  
@@ -151,6 +166,13 @@ public class Story : MonoBehaviour
      //   GetComponent<AudioSource>().Play();
         Debug.Log(col.transform.name);
         
+        //Audio Clip stop 
+        AudioClip1.SetActive(false);
+        AudioClip2.SetActive(false);
+        
+        
+        
+
         if(col.transform.name == "Aaron" || col.transform.name == "Bach")
         {
             refreshText();
@@ -175,12 +197,26 @@ public class Story : MonoBehaviour
         {
             if(isTalking)
             {
+                //
+
+
                 actionTextBox.text = " ";
                 dialogueTextBox.text = "";
                 int apple = 0;
                 if(hitName)
                 {
+                    //Audio CLip1 Play
+                    
+                    AudioClip2.SetActive(true);
                     apple = 1;
+                }
+                if(hitName)
+                {
+                    AudioClip2.SetActive(true);
+                }
+                else
+                {
+                    AudioClip1.SetActive(true);
                 }
                 Debug.Log("D: " + apple);
                 List<string> items = speechAll[apple];
@@ -219,7 +255,7 @@ public class Story : MonoBehaviour
         List<string> speechList = new List<string>(AllWords);
         speechAll = new List<List<string>>();
     //    ds = new DialogueService();
-
+        audioFlag = true;
         string myName = "";
         for(int i = 0; i <= speechList.Count-1; i++)
         {
