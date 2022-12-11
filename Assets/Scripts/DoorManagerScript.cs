@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DoorManagerScript : MonoBehaviour
 {
     public GameObject npc;
+    public GameObject tv;
 
     private Vector3 rotationB;
     private Vector3 rotationC;
@@ -37,6 +38,7 @@ public class DoorManagerScript : MonoBehaviour
         if ((rotationB == check) & (rotationC == check) & (rotationD == check2) | (openCount == 3))
         {
             npc.SetActive(true);
+            tv.SetActive(false);
         }
     }
 
