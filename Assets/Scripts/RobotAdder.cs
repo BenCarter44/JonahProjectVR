@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Random = System.Random;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class RobotAdder : MonoBehaviour
 {
@@ -112,21 +111,7 @@ public class RobotAdder : MonoBehaviour
         newJeep.GetComponent<RobotCars>().theMainPlayer = mainPlayer;
         newJeep.GetComponent<RobotCars>().scoreCard = sc;
 
-        //GameObject go = new GameObject("Target");
-      //  Vector3 sourcePostion = new Vector3( 100, 20, 100 );//The position you want to place your agent
-        NavMeshHit closestHit;
-        if( NavMesh.SamplePosition(  newJeep.transform.position, out closestHit, 500, 1 ) )
-        {
-        newJeep.transform.position = closestHit.position;
         newJeep.AddComponent<UnityEngine.AI.NavMeshAgent>();
-        //TODO
-        }
-        else
-        {
-            newJeep.AddComponent<UnityEngine.AI.NavMeshAgent>();
-        }
-
-       // newJeep.AddComponent<UnityEngine.AI.NavMeshAgent>();
         newJeep.GetComponent<UnityEngine.AI.NavMeshAgent>().baseOffset = 0f;
         newJeep.GetComponent<UnityEngine.AI.NavMeshAgent>().height = .25f;
         newJeep.GetComponent<UnityEngine.AI.NavMeshAgent>().height = .1f;
