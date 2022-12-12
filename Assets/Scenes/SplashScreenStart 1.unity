@@ -1994,8 +1994,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'The Following game is an interpretation of the story of Jonah as if it
-    happened at GCU. While the setting is different the same themes exist, trying
-    to run away from responsibility to well lead to more trouble. '
+    happened at GCU. While the setting is different, the same themes exist. Trying
+    to run away from responsibility will lead to more trouble. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8503641abce0fb34aa35142f7f3dd63a, type: 2}
   m_sharedMaterial: {fileID: 5447646929144745723, guid: 8503641abce0fb34aa35142f7f3dd63a, type: 2}
