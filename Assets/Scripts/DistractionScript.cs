@@ -26,7 +26,7 @@ public class DistractionScript : MonoBehaviour
     public void pressUselessBtn()
     {
         uselessCount++;
-        if( uselessCount == 100)
+        if(uselessCount == 100)
         {
             uselessText.text = "LOL";
             uselessBtn.SetActive(false);
