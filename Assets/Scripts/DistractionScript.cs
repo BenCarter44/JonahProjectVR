@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class DistractionScript : MonoBehaviour
 {
 
-    public GameObject uselessCanvas;
+    public GameObject uselessBtn;
+    public TMP_Text uselessText;
     private int uselessCount;
 
     // Start is called before the first frame update
@@ -23,9 +26,10 @@ public class DistractionScript : MonoBehaviour
     public void pressUselessBtn()
     {
         uselessCount++;
-        if( uselessCount >= 1000)
+        if( uselessCount == 100)
         {
-            uselessCanvas.SetActive(false);
+            uselessText.text = "LOL";
+            uselessBtn.SetActive(false);
         }
     }
 }

@@ -7241,7 +7241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0512d5f09730d7439a6d8e1b09f73b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uselessCanvas: {fileID: 0}
+  uselessBtn: {fileID: 1935043597}
+  uselessText: {fileID: 1123748614}
 --- !u!4 &1109888325
 Transform:
   m_ObjectHideFlags: 0
@@ -14764,7 +14765,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: press me 1000 times for a suprise
+  m_text: press me 100 times for a suprise
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3341df75ed84783489afd2b045ec4f53, type: 2}
   m_sharedMaterial: {fileID: 5040478683128701921, guid: 3341df75ed84783489afd2b045ec4f53, type: 2}
@@ -14791,8 +14792,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 9
+  m_fontSizeBase: 9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
