@@ -23,7 +23,7 @@ public class DistractionScript : MonoBehaviour
     public void pressUselessBtn()
     {
         uselessCount++;
-        if( uselessCount >= 10)
+        if( uselessCount >= 1000)
         {
             uselessCanvas.SetActive(false);
         }
