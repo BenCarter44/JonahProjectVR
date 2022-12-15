@@ -36,7 +36,7 @@ This project is a XR Unity Project.
 
 You will have to make sure it is set to **build on Android** (to run on an Oculus headset). Also, the build settings should match the below. The scenes are in the `Assets/Scenes/` folder.
 
->**When you first open the project, no scenes will appear on project load! You will need to navigate to the scene of your choice (use the scenes below in build settings) to view it.**
+**When you first open the project, no scenes will appear on project load! You will need to navigate to the scene of your choice (use the scenes below in build settings) to view it.**
 
 **Build settings:**
 1. `Scenes/SplashScreenStart 1` - # 0
