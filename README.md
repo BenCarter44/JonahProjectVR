@@ -1,4 +1,4 @@
-# BibleProjectVR
+# JonahProjectVR
 
 ### [See the project report here](https://codingcando.com/fileShare/file?code=bibleProjectVR)
 
