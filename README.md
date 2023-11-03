@@ -23,6 +23,7 @@ To download:
 - When you clone it, it will appear to "hang" when pulling. It will work! When it is "hanging" is really when it is downloading the large assets from the Git LFS. The failure to see feedback is a bug present in Git LFS.
 - Build Settings should be up to date. Should be able to simply press build and run. 
 - The scenes may not appear immediately on project load, so you may have to go the scene asset of your choosing in the `Assets/Scenes/` folder. 
+- ** ONE IMPORTANT NOTE: There is one file that is "too big" for git. To solve that, you will find a map.obj.zip in the Assets/Models/Buildings/gcumap5/ folder. Please unzip this after cloning. **
 
 ---
 ## To Install
