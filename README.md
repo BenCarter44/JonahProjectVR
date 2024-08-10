@@ -18,7 +18,6 @@ Thank you,
 The team.
 
 ## Download instructions.
-This repository uses Git LFS. The LFS server is [Ben's RPi-based server](https://codingcando.com/) back at his house. 
 
 To download:
 - Clone the [repository](https://github.com/BenRobotics101/BibleProjectVR)
