@@ -2,6 +2,8 @@
 
 ### [See the project report here](https://codingcando.com/fileShare/file?code=bibleProjectVR)
 
+![General Screenshots](screenshot.png)
+![In Game Screenshot](in-game.png)
 
 ---
 ## About
